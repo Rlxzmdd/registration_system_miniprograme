@@ -1,0 +1,2 @@
+# regstration_system_miniprograme
+基于小程序的新生报到系统前端
