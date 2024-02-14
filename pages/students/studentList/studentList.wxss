@@ -1,0 +1,107 @@
+.all-box {
+  background-color: #F0F0F0;
+}
+
+/* 顶部搜索框 */
+.header-box {
+  color: #595959;
+  background-color: #fff;
+  font-size: 34rpx;
+  padding: 20rpx;
+  border-radius: 0px 0px 24rpx 24rpx;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.form-box {
+  color: #595959;
+}
+
+.box-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+}
+
+.tip-box {
+  color: #CACACA;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+
+.box-item .icon-circle-blue {
+  position: absolute;
+  right: 6rpx;
+  font-size: 50rpx;
+}
+
+.input-placeholder,
+.textarea-placeholder {
+  color: #c7c7c7;
+}
+
+.left-box {
+  width: 10rpx;
+  height: 30rpx;
+  background: #65A1E1;
+  border-radius: 16rpx;
+  margin-right: 18rpx;
+}
+
+/* 列表 */
+.list-box {
+  padding: 20rpx;
+}
+
+.stu-box {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 40rpx;
+}
+
+.stu-box .name {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #595959;
+  margin-bottom: 8rpx;
+}
+
+.stu-box .bottom {
+  font-size: 28rpx;
+  color: #CACACA;
+}
+
+/* 底部按钮 */
+.bottom-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px -2px 4px 2px rgba(198, 198, 198, 0.25);
+  border-radius: 8px 8px 0px 0px;
+  padding-bottom: constant(safe-area-inset-bottom);
+  /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom);
+  /*兼容 IOS>11.2*/
+}
+
+.button-next {
+  margin: 0 20rpx;
+  height: 80rpx !important;
+  width: 300rpx;
+}
+
+.button-previous {
+  margin: 0 20rpx;
+  height: 80rpx !important;
+  width: 300rpx;
+}

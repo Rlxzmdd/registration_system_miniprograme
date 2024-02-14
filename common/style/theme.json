@@ -1,0 +1,18 @@
+{
+  "light": {
+    "navBgColor": "#F0F0F0",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "cardBgColor": "#FFFFFF",
+    "tabBorderStyle": "black",
+    "navColor":"black",
+    "bgTextStyle":"dark"
+  },
+  "dark": {
+    "navBgColor": "#0D0D0D",
+    "navigationBarBackgroundColor": "#313030",
+    "cardBgColor": "#6D6D6D",
+    "tabBorderStyle": "white",
+    "navColor":"white",
+    "bgTextStyle":"light"
+  }
+}

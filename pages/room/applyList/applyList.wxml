@@ -1,0 +1,25 @@
+<!--pages/room/applylist/applylist.wxml-->
+<view class="container">
+ 
+  <view class="sticky">
+    <view class="header">
+      <block wx:for="{{category}}" wx:key="index">
+        <view class="cate-item {{currCateIdx==index?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+          data-key="{{item.key}}">
+          {{item.text}}
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 申请列表 -->
+  <view class="list-box">
+    <block wx:for="{{10}}" wx:key="index" wx:if="{{applyList[index]}}">
+      <custom-room-card name="{{applyList[index].name}}" date="{{applyList[index].date}}"> 
+      <text slot="right" class="icon-saoma" style="font-size: 80rpx;"></text>
+    </custom-room-card>
+    </block>
+  </view>
+
+</view>
+

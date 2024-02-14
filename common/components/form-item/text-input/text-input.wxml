@@ -1,0 +1,13 @@
+<view class='form-box'>
+  <view class='box-item'>
+    <slot name='left-box'></slot>
+    <input class="input" value="{{ input_text }}" type="{{type || forminfo.inputType}}" password="{{forminfo.password || false}}" maxlength="{{forminfo.maxlength || 140}}" bindblur='enterValue' bindinput="inputChange" placeholder="{{placeholder || forminfo.placeholder}}" placeholder-class="input-placeholder" >
+    </input>
+    <!-- <van-field input-class="input" placeholder="{{forminfo.placeholder}}" autosize clickable border="{{ false }}" bind:blur="enterValue" /> -->
+    <text wx:if="{{valiRes && valiRes.status != 0}}" class="icon-circle-blue" style="color: {{valiRes.status==1?'#65a1e1':valiRes.status==2?'#3ace96':'#ff595f'}};"></text>
+    <slot name='right-box'></slot>
+  </view>
+  <view class="tip-box" wx:if="{{forminfo.tip}}">
+    <view>{{forminfo.tip}}</view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<page-header title='学生信息查询' open-slot>
+  <view slot="content">
+    <view class="header-box">
+      <text-input id="search" style="width: 100%;" forminfo="{{searchParams}}" bind:inputBlur="searchClick">
+        <view slot="left-box" class="left-box"></view>
+        <view slot="right-box" class="right-box" bindtap="searchClick">
+          <text class="icon-xiayibu" style="color: #65a1e1; font-size: 40rpx;"></text>
+        </view>
+      </text-input>
+    </view>
+  </view>
+</page-header>
+
+<view class="all-box">
+  <!-- 学生列表 -->
+  <view class="list-box">
+    <block wx:for="{{pageData}}" wx:key="index">
+      <view class="stu-box" bindtap="viewStuDetail" data-idx="{{index}}">
+        <view class="name">
+          {{((myStudent.current-1) * myStudent.size) + (index + 1)}}. {{item.name}}
+        </view>
+        <view class="bottom justify-between">
+          <text>{{item.college}} {{item.classes}}</text>
+          <text>No.{{item.number}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{pageData.length <= 0}}">
+      <van-empty image="error" description="" />
+    </view>
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="bottom-box" wx:if="{{myStudent.pages>1}}">
+  <van-button bind:tap="previousPage" custom-class="button-previous" plain round color="#65A1E1" type="info" disabled="{{myStudent.current==1}}">上一页
+  </van-button>
+  <van-button bind:tap="nextPage" custom-class="button-next" round color="#65A1E1" type="info" disabled="{{myStudent.current==myStudent.pages}}">下一页
+  </van-button>
+</view>
+<view style="width: 100%;height: 140rpx;"></view>

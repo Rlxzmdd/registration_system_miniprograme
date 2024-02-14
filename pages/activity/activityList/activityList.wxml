@@ -1,0 +1,118 @@
+<view class="container">
+  <!-- 功能入口块 -->
+  <view class="func-card">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="{{item.tapEvent}}" data-popupkey="{{item.key}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="act-box">
+    <view class="sticky">
+      <view class="header">
+        <block wx:for="{{category}}" wx:key="index">
+          <view class="cate-item {{currCateIdx==index?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+            data-key="{{item.key}}">
+            {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="list-box">
+      <block wx:for="{{actList[category[currCateIdx].key].list}}" wx:for-item='page' wx:for-index='pageKey' wx:key="pageKey">
+        <block wx:for="{{page}}" wx:key="index">
+          <van-swipe-cell bind:click="clickSwiperCell" data-id="{{item.id}}" data-pagekey="{{pageKey}}" data-index="{{index}}" right-width="{{ 65 }}"
+            style="width: 100%;">
+            <view class="act-item" bindtap="clickAct" data-id="{{item.id}}">
+              <view class="title">
+                <text class="icon-qizhi" style="padding-right: 10rpx;color:{{item.isOwner==1?'#64b7da':'#57b788'}};"></text>
+                <text>{{item.title}}</text>
+              </view>
+              <view class="bottom">
+                <text>{{item.createTime +' @ ' + (item.minTitle || (item.creatorType == 'student' ? item.realName : item.realName+"老师"))}}</text>
+                <text>{{item.startTime}}</text>
+              </view>
+            </view>
+            <view slot="right" class="delete-btn">删除</view>
+          </van-swipe-cell>
+        </block>
+      </block>
+      <block wx:if="{{actList[category[currCateIdx].key].list.p1.length <= 0}}">
+        <image src="/static/empty.png" style="height: 400rpx;"></image>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 创建活动 -->
+<van-popup show="{{popup.create}}" position="bottom" round bind:close="closePopup" data-popupkey="create">
+  <custom-card title_4="创建活动">
+    <view class="" slot="content">
+      <van-field value="{{ createData.title }}" left-icon="flag-o" placeholder="活动名称" border="{{false}}"
+        bind:change="inputChange" input-class="input-class" data-key="title" center />
+      <van-row gutter="10">
+        <van-col span="12">
+          <van-field value="{{ createData.location }}" left-icon="location-o" placeholder="活动地点" border="{{false}}"
+            bind:change="inputChange" input-class="input-class" data-key="location" center />
+        </van-col>
+        <van-col span="12">
+          <van-field value="{{ createData.limit ? '不限' : createData.maxNum }}" left-icon="friends-o" placeholder="最多人数"
+            type="number" border="{{false}}" bind:change="inputChange" input-class="input-class" data-key="maxNum"
+            center />
+        </van-col>
+      </van-row>
+
+      <van-cell title="不限人数" label="开启后将不限制报名参加人数。" border="{{ false }}">
+        <van-switch checked="{{ createData.limit }}" size="48rpx" bind:change="switchChange" data-key="limit" />
+      </van-cell>
+      <van-cell title="开启报名" label="开启后需报名才可参加活动。" border="{{ false }}">
+        <van-switch checked="{{ createData.isApply == 1 }}" size="48rpx" bind:change="switchChange" data-key="isApply" />
+      </van-cell>
+      <van-transition show="{{ createData.isApply == 1 }}" name="slide-down">
+        <van-cell-group title="报名时间：">
+          <van-cell border="{{false}}" value="{{createData.applyTimeStart}}" center bind:click="closePopup"
+            data-key="applyTimeStart" data-popupkey='datetime' value-class="input-class" custom-class="cell-custom-1" />
+          <!-- <view style="padding-left: 40rpx;"> -->
+          <van-cell border="{{false}}" value="{{createData.applyTimeEnd}}" center bind:click="closePopup"
+            data-key="applyTimeEnd" data-popupkey='datetime' value-class="input-class" custom-class="cell-custom-2" />
+          <!-- </view> -->
+        </van-cell-group>
+      </van-transition>
+
+      <van-cell title="允许多次核销" label="开启后学生可被多次核销。" border="{{ false }}">
+        <van-switch checked="{{ createData.isRepeat == 1 }}" size="48rpx" bind:change="switchChange"
+          data-key="isRepeat" />
+      </van-cell>
+
+      <van-cell title="允许分享活动" label="开启后可以在微信分享该活动。" border="{{ false }}">
+        <van-switch checked="{{ createData.isShare == 1 }}" size="48rpx" bind:change="switchChange"
+          data-key="isShare" />
+      </van-cell>
+
+      <van-cell title="设为长期活动" label="开启后需手动结束该活动。" border="{{ false }}">
+        <van-switch checked="{{ createData.isDurative == 1 }}" bind:change="switchChange" data-key="isDurative" size="48rpx" />
+      </van-cell>
+      <van-cell-group title="活动时间：">
+        <van-cell border="{{false}}" value="{{createData.activityTimeStart}}" center bind:click="closePopup"
+          data-key="activityTimeStart" data-popupkey='datetime' value-class="input-class" custom-class="cell-custom-1" />
+        <van-transition show="{{ !createData.isDurative }}" name="slide-down">
+          <!-- <view style="padding-left: 40rpx;"> -->
+          <van-cell border="{{false}}" value="{{createData.activityTimeEnd}}" center bind:click="closePopup" data-key="activityTimeEnd"
+            data-popupkey='datetime' value-class="input-class" custom-class="cell-custom-2" />
+          <!-- </view> -->
+        </van-transition>
+      </van-cell-group>
+      <van-row style="text-align: center;" catchtap="confirmCreate">
+        <van-icon name='checked' color='#d6e1ff' size='3rem'></van-icon>
+      </van-row>
+    </view>
+  </custom-card>
+</van-popup>
+<!-- 日期时间选择器 -->
+<van-popup show="{{popup.datetime}}" position="bottom" round bind:close="closePopup" data-popupkey="datetime">
+  <van-datetime-picker type="datetime" value="{{ dtPicker.currentTime }}" min-date="{{ dtPicker.minDate }}"
+    max-date="{{ dtPicker.maxDate }}" bind:confirm="inputChange" bind:cancel="closePopup" data-popupkey="datetime"
+    data-key="{{dtPicker.currDtKey}}" />
+</van-popup>

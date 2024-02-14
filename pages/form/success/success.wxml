@@ -1,0 +1,13 @@
+<!-- 顶部导航栏留白 -->
+<van-nav-bar />
+
+<view class="box flex-center flex-column">
+  <view class="icon flex-center">
+    <van-icon name="success" color="#65A1E1" size="120rpx" />
+  </view>
+  <view class="tip-text flex-center flex-column">
+    <text>提交成功</text>
+    <!-- <text>请耐心等待审核结果</text> -->
+  </view>
+  <button class="back-btn" bindtap="back">返回</button>
+</view>

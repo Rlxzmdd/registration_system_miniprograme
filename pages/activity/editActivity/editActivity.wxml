@@ -1,0 +1,206 @@
+<view class="container">
+  <!-- 顶部Card -->
+  <custom-card title="{{activityData.bigTitle}}" content="{{activityData.title || '--'}}"
+    leftBottom="{{activityData.location || '--'}}"
+    rightBottom="{{activityData.activityTimeStart}}{{activityData.timeEnd}}" class="top-card">
+    <view class="right" slot="right" wx:if="{{activityData.isExamine == 1}}">
+      <view class="entrance" catchtap="openScan">
+        <text class="icon-saoma" style="font-size: 50rpx;"></text>
+        <text>扫码核销</text>
+      </view>
+      <view class="entrance" catchtap="WhileopenScan">
+        <text class="icon-saoma" style="font-size: 50rpx;"></text>
+        <text>连续扫码</text>
+      </view>
+
+    </view>
+  </custom-card>
+  <!-- 功能入口块 -->
+  <view class="func-card" wx:if="{{func.length > 0}}">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="{{item.tapEvent}}" data-key="{{item.key || ''}}"
+        data-popupKey="{{item.popupKey || ''}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  
+  <!-- 管理员 -->
+  <custom-card title_4="管理人员" class="admin-card" bindtap="toPage" data-key="../editPersonnel/editPersonnel?id"
+    wx:if="{{activityData.adminInfo && activityData.adminInfo.length>0}}">
+    <view slot="content" class="admin">
+      <view style="width: 100%;">
+        <block wx:for="{{3}}" wx:key="index">
+          <view class="admin-item" wx:if="{{activityData.adminInfo[index]}}">
+            <view class="name">{{activityData.adminInfo[index].name}}</view>
+            <view class="count">{{activityData.adminInfo[index].num}}人</view>
+          </view>
+        </block>
+      </view>
+      <view class="right">
+        <text class="icon-right"></text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 核销记录 -->
+  <!-- wx:if="{{elimData.data.length>0}}" -->
+  <custom-card title_4="核销记录" class="record-card">
+    <view slot="content" class="record" bindtap="toPage" data-key="../records/records?id">
+      <view style="width: 100%;">
+        <view class="none" wx:if="{{elimData.data.length==0}}">
+          暂无记录
+        </view>
+        <block wx:for="{{3}}" wx:key="index" wx:if="{{elimData.data[index]}}">
+          <view class="rec-item">
+            <view class="title">
+              <text class="">#{{elimData.data[index].serialNum}} </text>
+              <text>{{(elimData.data[index].examinedCollege +" "+ elimData.data[index].examinedName) || '...'}}</text>
+            </view>
+            <view class="bottom">
+              <text>@{{elimData.data[index].examinerName}}</text>
+              <text style="float: right;">{{elimData.data[index].examineTime}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="right">
+        <text class="icon-right"></text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 核销人数折线图 -->
+  <custom-card title_4="今日情况" wx:if="{{elimForHour}}">
+    <view class='line-chart' slot='content'>
+    <scroll-view scroll-x style="overflow: hidden;">
+      <canvas class="u-canvas" canvas-id="chartbar1"></canvas>
+    </scroll-view>
+    </view>
+  </custom-card>
+  <!-- 核销数据列表 -->
+  <custom-card title_4="班级数据" wx:if="{{elimForClasses}}">
+    <view class="elim-data" slot="content">
+      <!-- 列表标题 -->
+      <view class="title flex-center">
+        <text class="">班级</text>
+        <text class="">班级人数</text>
+        <text class="">已核销人数</text>
+      </view>
+      <!-- 列表数据 -->
+      <view class="list flex-column">
+        <view bindtap="" class="row flex-center" wx:for="{{elimForClasses}}" wx:key="index">
+          <text class="">{{item.className}}</text>
+          <text class="">{{item.classNum}}</text>
+          <text class="">{{item.examineNum}}</text>
+        </view>
+        <view wx:if="{{!elimForClasses || elimForClasses.length==0}}" class="">
+          <van-empty image="search" description="暂无数据" />
+        </view>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 修改活动 -->
+  <van-popup show="{{popup.modify}}" position="bottom" round bind:close="closePopup" data-popupkey="modify">
+    <custom-card title_4="修改活动">
+      <view class="" slot="content">
+        <van-field value="{{ modifyData.title }}" left-icon="flag-o" placeholder="活动名称" border="{{false}}"
+          bind:change="inputChange" data-source="modifyData" input-class="input-class" data-key="title" center />
+        <van-row gutter="10">
+          <van-col span="12">
+            <van-field value="{{ modifyData.location }}" left-icon="location-o" placeholder="活动地点" border="{{false}}"
+              bind:change="inputChange" data-source="modifyData" input-class="input-class" data-key="location" center />
+          </van-col>
+          <van-col span="12">
+            <van-field value="{{ modifyData.limit ? '不限' : modifyData.maxNum }}" left-icon="friends-o"
+              placeholder="最多人数" type="number" border="{{false}}" bind:change="inputChange" data-source="modifyData"
+              input-class="input-class" data-key="maxNum" center />
+          </van-col>
+        </van-row>
+
+        <van-cell title="不限人数" label="开启后将不限制报名参加人数。" border="{{ false }}">
+          <van-switch checked="{{ modifyData.limit }}" size="48rpx" bind:change="switchChange" data-key="limit" />
+        </van-cell>
+        <van-cell title="开启报名" label="开启后需报名才可参加活动。" border="{{ false }}">
+          <van-switch checked="{{ modifyData.isApply == 1 }}" size="48rpx" bind:change="switchChange"
+            data-key="isApply" />
+        </van-cell>
+        <van-transition show="{{ modifyData.isApply == 1 }}" name="slide-down">
+          <van-cell-group title="报名时间：">
+            <van-cell border="{{false}}" value="{{modifyData.applyTimeStart}}" center bind:click="closePopup"
+              data-key="applyTimeStart" data-popupkey='datetime' value-class="input-class"
+              custom-class="cell-custom-1" />
+            <!-- <view style="padding-left: 40rpx;"> -->
+            <van-cell border="{{false}}" value="{{modifyData.applyTimeEnd}}" center bind:click="closePopup"
+              data-key="applyTimeEnd" data-popupkey='datetime' value-class="input-class" custom-class="cell-custom-2" />
+            <!-- </view> -->
+          </van-cell-group>
+        </van-transition>
+
+        <van-cell title="允许多次核销" label="开启后学生可被多次核销。" border="{{ false }}">
+          <van-switch checked="{{ modifyData.isRepeat == 1 }}" size="48rpx" bind:change="switchChange"
+            data-key="isRepeat" />
+        </van-cell>
+
+        <van-cell title="允许分享活动" label="开启后可以在微信分享该活动。" border="{{ false }}">
+          <van-switch checked="{{ modifyData.isShare == 1 }}" size="48rpx" bind:change="switchChange"
+            data-key="isShare" />
+        </van-cell>
+
+        <van-cell title="设为长期活动" label="开启后需手动结束该活动。" border="{{ false }}">
+          <van-switch checked="{{modifyData.isDurative == 1}}" bind:change="switchChange" data-key="isDurative"
+            size="48rpx" />
+        </van-cell>
+        <van-cell-group title="活动时间：">
+          <van-cell border="{{false}}" value="{{modifyData.activityTimeStart}}" center bind:click="closePopup"
+            data-key="activityTimeStart" data-popupkey='datetime' value-class="input-class"
+            custom-class="cell-custom-1" />
+          <van-transition show="{{ modifyData.isDurative == 0}}" name="slide-down">
+            <!-- <view style="padding-left: 40rpx;"> -->
+            <van-cell border="{{false}}" value="{{modifyData.activityTimeEnd}}" center bind:click="closePopup"
+              data-key="activityTimeEnd" data-popupkey='datetime' value-class="input-class"
+              custom-class="cell-custom-2" />
+            <!-- </view> -->
+          </van-transition>
+        </van-cell-group>
+        <van-row style="text-align: center;" catchtap="confirm">
+          <van-icon name='checked' color='#d6e1ff' size='3rem'></van-icon>
+        </van-row>
+      </view>
+    </custom-card>
+  </van-popup>
+  <!-- 日期时间选择器 -->
+  <van-popup show="{{popup.datetime}}" position="bottom" round bind:close="closePopup" data-popupkey="datetime">
+    <van-datetime-picker type="datetime" value="{{ dtPicker.currentTime }}" min-date="{{ dtPicker.minDate }}"
+      max-date="{{ dtPicker.maxDate }}" bind:confirm="inputChange" bind:cancel="closePopup" data-popupkey="datetime"
+      data-key="{{dtPicker.currDtKey}}" />
+  </van-popup>
+  <!-- 添加管理员 -->
+  <van-popup show="{{popup.addPersonnel}}" position="bottom" round bind:close="closePopup" data-popupKey="addPersonnel">
+    <custom-card title_4="搜索添加">
+      <view slot="content" style="padding-bottom: 20rpx;">
+        <view class="search">
+          <view class="search-input">
+            <van-icon name="search" color="#B5B5B5" size="36rpx" style="padding: 0 4rpx 0 20rpx;"></van-icon>
+            <van-field value="{{ addData.number }}" placeholder="输入学号/工号" border="{{false}}" bind:change="inputChange"
+              input-class="add-input" data-source="addData" data-key="number" center custom-style="padding: 0px;"
+              style="width: 100%;" />
+          </view>
+          <van-button bind:click="clickSearch" type="primary" size="normal"
+            color="{{!addData.number?'#d6e1ff':'#9cb7ff'}}" custom-class="search-btn">搜索
+          </van-button>
+        </view>
+        <view class="search-res" wx:if="{{searchRes}}">
+          <view>
+            <view class="name">{{searchRes.name}}</view>
+            <view class="type">{{searchRes.type}}</view>
+          </view>
+          <van-icon catchtap="clickAdd" name="add-o" size="60rpx" color="#595959"></van-icon>
+        </view>
+      </view>
+    </custom-card>
+  </van-popup>
+
+
+
+
+</view>

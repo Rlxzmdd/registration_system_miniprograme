@@ -1,0 +1,16 @@
+<view class="container">
+  <!-- 顶部信息块 -->
+  <custom-room title_4="房间列表">
+  </custom-room>
+  <!-- 房间列表 -->
+  <block wx:for="{{roomList}}" wx:key="index">
+    <custom-room imagePath="{{item.imagePath}}" title_4="{{item.title}}" address="{{item.address}}" time="{{item.time}}" tags="true" isIcon="true" bindtap="topage" data-id="{{item.id}}">
+      <block wx:for="{{item.tags}}" wx:key="index">
+        <text slot="tags" class="tag">{{item}}</text>
+      </block>
+      <view slot="icon">
+        <van-icon name="arrow" />
+      </view>
+    </custom-room>
+  </block>
+</view>

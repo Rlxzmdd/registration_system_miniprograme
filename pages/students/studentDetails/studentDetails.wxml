@@ -1,0 +1,42 @@
+<page-header title='{{stuInfo.baseInfo.name}}' open-slot="{{queryParams.identity!='学生'}}">
+  <view slot="content" wx:if="{{!queryParams.isMe && queryParams.identity!='学生'}}">
+    <view class="header-box">
+      <view class="header">
+        <block wx:for="{{category}}" wx:key="index">
+          <view class="cate-item {{currCateIdx==index?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+            data-key="{{item.key}}">
+            {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</page-header>
+
+<view class="all-box">
+  <!-- <swiper bindchange="swiperChange"> -->
+  <view class="info-container">
+    <!-- <swiper-item style="border-radius: 16rpx;"> -->
+    <view class="info-table">
+      <view class="justify-between" wx:if="{{stuInfo[category[0].key] && currCateIdx==0}}">
+        <text>相片</text>
+        <view class="img-box">
+          <image src="{{stuInfo[category[0].key].avatar || 'https://registration-system-resource.oss-cn-shenzhen.aliyuncs.com/images/notice/'+stuInfo[category[0].key].image[0]+'.jpg'}}" mode="aspectFill" lazy-load></image>
+        </view>
+      </view>
+      <block wx:for="{{stuInfo[category[currCateIdx].key]}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+        <view class="justify-between" wx:if="{{key!='avatar'}}">
+          <text>{{dict[key]}}</text>
+          <text user-select>{{value || '—'}}</text>
+        </view>
+      </block>
+      <block wx:if="{{!stuInfo[category[currCateIdx].key]}}">
+        <van-empty description="未填写该信息" />
+      </block>
+    </view>
+    <!-- </swiper-item> -->
+
+    <!-- </swiper> -->
+  </view>
+
+</view>

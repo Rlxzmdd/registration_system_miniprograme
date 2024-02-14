@@ -1,0 +1,22 @@
+<view class='form-box'>
+  <view class="upload-box">
+    <view class='box-item'>
+      <van-uploader file-list="{{ fileList }}" preview-size="180rpx" deletable="{{ true }}" disabled="{{uploadProgress && uploadProgress!=100}}"
+        max-count="{{forminfo.maxCount || 3}}" max-size="{{forminfo.maxSize || 10485760}}"
+        upload-text="{{forminfo.placeholder}}" upload-icon="plus" accept="{{forminfo.acceptType || 'image'}}"
+        sizeType="{{forminfo.sizeType}}" capture="{{forminfo.capture || ['album']}}" bind:after-read="afterRead"
+        bind:delete="delFile" bind:oversize="oversize" />
+
+      <text wx:if="{{valiRes.status != 0}}" class="icon-circle-blue"
+        style="color: {{valiRes.status==1?'#65a1e1':valiRes.status==2?'#3ace96':'#ff595f'}};"></text>
+    </view>
+
+    <view class="progress-box" wx:if="{{uploadProgress && uploadProgress!=100}}">
+      <van-progress percentage="{{uploadProgress}}" color="#3ace96" track-color="#f0f0f0" />
+    </view>
+  </view>
+
+  <view class="tip-box" wx:if="{{forminfo.tip}}">
+    <view>{{forminfo.tip}}</view>
+  </view>
+</view>

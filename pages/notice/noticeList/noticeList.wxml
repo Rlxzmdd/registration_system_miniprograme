@@ -1,0 +1,52 @@
+<page-header title="公告列表" open-slot="{{canRelease?true:false}}">
+  <view slot="content" wx:if="{{canRelease}}">
+    <view class="header-box">
+      <view class="header">
+        <block wx:for="{{category}}" wx:key="index">
+          <view class="cate-item {{currCate==item.key?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+            data-key="{{item.key}}">
+            {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</page-header>
+
+<view class="notice-container">
+  <block wx:for="{{noticeList}}" wx:for-item="notice" wx:for-index="noticeIndex" wx:key="noticeIndex">
+    <time-axis isCurent="{{noticeIndex==0}}" axisTitle="{{notice.releaseTime}}">
+      <view class="notice-content flex-column" slot="rightContent">
+        <text user-select decode class="title">{{notice.title}}</text>
+        <text user-select decode class="content">{{notice.content}}</text>
+        <view class="img-box flex-row">
+          <block wx:for="{{notice.images}}" wx:key="index">
+            <van-image fit="cover" width="191rpx" height="191rpx" src="{{item.url}}" lazy-load show-menu-by-longpress
+              radius="10" class="van-image" bind:tap="imgClick" data-index="{{index}}"
+              data-notice-index="{{noticeIndex}}" />
+          </block>
+        </view>
+        <view class="justify-between tip">
+          <text user-select decode class="">{{notice.publisher}}</text>
+          <!-- <text user-select decode class="tip">{{notice.releaseTime}}</text> -->
+          <text wx:if="{{notice.myRelease}}" bindtap="delNotice" data-id="{{notice.id}}">删除</text>
+        </view>
+      </view>
+    </time-axis>
+  </block>
+</view>
+
+<!-- 底部按钮 -->
+<view class="bottom-box" wx:if="{{currCate=='myRelease'}}">
+  <!-- 不使用按钮加载分页 -->
+  <!-- <van-button bind:tap="previousPage" custom-class="button-previous" plain round color="#65A1E1" type="info"
+    disabled="{{noticeRawData[currCate].current==1}}">上一页
+  </van-button>
+  <van-button bind:tap="nextPage" custom-class="button-next" round color="#65A1E1" type="info"
+    disabled="{{noticeRawData[currCate].current==noticeRawData[currCate].pages}}">下一页
+  </van-button> -->
+  <van-button bind:tap="releaseNotice" custom-class="top-button" plain round color="#65A1E1" type="info"
+    style="width: 100%;">发布公告
+  </van-button>
+</view>
+<view style="width: 100%;height: 140rpx;"></view>

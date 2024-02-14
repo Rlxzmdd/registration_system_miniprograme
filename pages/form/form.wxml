@@ -1,0 +1,64 @@
+<page-header title="{{title || '填写表单'}}"></page-header>
+
+<view class='reports-container'>
+	<view class='reports-box' wx:for="{{formList}}" wx:for-index="idx" wx:for-item="formItem" wx:key="formId">
+		<view class='reports-header' wx:if="{{formItem.formName}}">
+			<view class='title'>
+				<text>{{formItem.formName}}</text>
+				<!-- <van-icon name="share-o" color="#65a1e1" size="24px" /> -->
+				<text class="icon-share icon" bindtap="clickShare"></text>
+			</view>
+			<view class="create-date">创建于{{formItem.createDate}}</view>
+			<view class="intro">{{formItem.formIntro}}</view>
+		</view>
+		<view class='reports-form'>
+			<block wx:for="{{formItem.formInfo}}" wx:for-index="idx" wx:for-item="items" wx:key="id">
+				<view class="form-item">
+					<view class="label">
+						{{idx+1}}. {{items.label}}
+					</view>
+					
+					<block wx:if="{{items.type=='input'}}">
+						<text-input id="{{items.id}}" forminfo="{{items}}"></text-input>
+					</block>
+
+					<block wx:if="{{items.type=='textarea'}}">
+						<textarea id="{{items.id}}" forminfo="{{items}}" style="height: auto;"></textarea>
+					</block>
+
+					<block wx:if="{{items.type=='radio'}}">
+						<radio-group id="{{items.id}}" forminfo="{{items}}"></radio-group>
+					</block>
+
+					<block wx:if="{{items.type=='checkbox'}}">
+						<checkbox id="{{items.id}}" forminfo="{{items}}" style="width: 100%;"></checkbox>
+					</block>
+
+					<block wx:if="{{items.type=='picker'}}">
+						<text-picker id="{{items.id}}" forminfo="{{items}}"></text-picker>
+					</block>
+
+					<block wx:if="{{items.type=='time'}}">
+						<time-picker id="{{items.id}}" forminfo="{{items}}"></time-picker>
+					</block>
+
+					<block wx:if="{{items.type=='region'}}">
+						<region-picker id="{{items.id}}" forminfo="{{items}}"></region-picker>
+					</block>
+
+					<block wx:if="{{items.type=='upload'}}">
+						<file-upload id="{{items.id}}" forminfo="{{items}}"></file-upload>
+					</block>
+
+				</view>
+			</block>
+		</view>
+	</view>
+
+	<view class='bottom'>
+		<!-- 提交表单 -->
+		<button bindtap='submitForm' class='reports-form-btn'>提交</button>
+	</view>
+	<view style="width: 100%;height: 140rpx;"></view>
+
+</view>

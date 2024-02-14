@@ -1,0 +1,91 @@
+/* 搜索添加 */
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  display: flex;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin-right: 20rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+
+.search-btn {
+  border-radius: 20rpx !important;
+  width: 142rpx !important;
+  height: 88rpx !important;
+}
+
+.add-input {
+  height: 88rpx !important;
+  background-color: #f0f0f0 !important;
+  padding: 12rpx 14rpx !important;
+  text-align: left !important;
+  color: #595959 !important;
+  font-size: 34rpx !important;
+}
+
+.search-res {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  border-radius: 20rpx;
+  padding: 24rpx 30rpx;
+  padding-bottom: 20rpx;
+  overflow: hidden;
+}
+
+
+/* 管理名单 */
+.record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.record .rec-item {
+  background-color: #f0f0f0;
+  border-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.rec-item .title,
+.search-res .name {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #595959;
+  margin-bottom: 10rpx;
+}
+
+.rec-item .bottom,
+.search-res .type {
+  font-size: 32rpx;
+  color: #b5b5b5;
+}
+
+.record .right {
+  font-weight: 600;
+  margin-right: -20rpx;
+  margin-left: 8rpx;
+}
+
+.record .delete-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 100%;
+  background-color: #ff9797;
+  font-size: 32rpx;
+  color: #fff;
+}

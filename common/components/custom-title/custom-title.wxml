@@ -1,0 +1,19 @@
+  <!-- 渐变头部 -->
+  <view class="{{showicon ? 'qr-header2' : 'qr-header'}}" >
+    <van-row>
+      <van-col span="21">
+        <image src="../../../static/szpt-icon.png" class="SZPT_Icon_small" wx:if="{{showicon}}"></image> 
+        <view class="left-title"  wx:if="{{title}}">
+            {{title}}
+        </view>
+        <view class="left-content"  wx:if="{{content}}">
+            {{content}}
+        </view>
+      </van-col>
+      <van-col span="3" >
+        <image src="../../../static/health-code.png" class="Health_Icon"  wx:if="{{iconHealth}}"></image>
+        
+      </van-col>
+    </van-row>
+  </view>
+  <slot name="content" ></slot>

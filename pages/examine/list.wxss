@@ -1,0 +1,149 @@
+/* 顶部切换分类 start */
+.header-box {
+  background-color: #fff;
+  border-radius: 0 0 24rpx 24rpx;
+  padding: 20rpx;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  color: #595959;
+  background-color: #f4f4f4;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+}
+
+.header .curr-cate {
+  color: #65A1E1;
+}
+/* 顶部切换分类 end */
+
+.all-box{
+  background-color: #F0F0F0;
+  padding:20rpx;
+}
+
+.reports-header {
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  z-index: 20;
+  width: auto;
+  padding: 30rpx;
+  background-color: #fff;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 48rpx;
+  color: #595959;
+}
+
+.title .icon {
+  color: #65a1e1;
+  font-size: 50rpx;
+}
+
+.subtitle {
+  color: #cacaca;
+  font-size: 34rpx;
+}
+
+/* 36rpx的字体大小 */
+
+.font {
+  font-size: 36rpx;
+  /* line-height: 72rpx; */
+}
+
+.reject {
+  background-color: #E16565;
+  border-radius: 16rpx;
+  height: 40rpx;
+  width: 10rpx;
+  margin: 20rpx 15rpx;
+}
+
+.wait {
+  background-color: #65A1E1;
+  border-radius: 16rpx;
+  height: 34rpx;
+  width: 10rpx;
+  margin: 20rpx 15rpx;
+}
+
+.passed {
+  background-color: #98E165;
+  border-radius: 16rpx;
+  height: 40rpx;
+  width: 10rpx;
+  margin: 20rpx 15rpx;
+}
+
+/* 顶部盒子 */
+.van-cell {
+  padding: var(--cell-vertical-padding, 10rpx) var(--cell-horizontal-padding, 6rpx) !important;
+}
+
+.van-cell-group {
+  padding-left: 6rpx !important;
+}
+
+.van-cell-group__title {
+  padding: 32rpx 0 16rpx 6rpx !important;
+}
+
+/* 审核列表盒子 */
+
+.audit-box {
+  position: relative;
+  z-index: 19;
+  background-color: #fff;
+  border-radius: 0 0 16rpx 16rpx;
+  padding: 20rpx;
+  margin: 0 20rpx 20rpx;
+}
+
+.audit-list {
+  line-height: 80rpx;
+  border-bottom: 4rpx solid #F8F8F8;
+}
+
+.audit-list .font{
+  min-height: 10rpx;
+}
+
+.audit-box audit-list{
+  border-bottom: none;
+}
+
+.bottom-box {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.button-next {
+  height: 80rpx  !important;
+  width: 200rpx;
+}
+
+.button-pervious {
+  margin: 0 20rpx;
+  height: 80rpx  !important;
+  width: 200rpx;
+  background: none !important;
+}

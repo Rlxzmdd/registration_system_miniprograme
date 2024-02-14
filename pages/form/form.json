@@ -1,0 +1,14 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "text-input": "../../common/components/form-item/text-input/text-input",
+    "textarea": "../../common/components/form-item/textarea/textarea",
+    "radio-group": "../../common/components/form-item/radio-group/radio-group",
+    "checkbox": "../../common/components/form-item/checkbox/checkbox",
+    "text-picker": "../../common/components/form-item/text-picker/text-picker",
+    "file-upload": "../../common/components/form-item/file-upload/file-upload",
+    "time-picker": "../../common/components/form-item/time-picker/time-picker",
+    "region-picker":"../../common/components/form-item/region-picker/region-picker",
+    "page-header": "../../common/components/page-header/page-header"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "custom-card":"/common/components/custom-card/custom-card",
+    "page-header": "/common/components/page-header/page-header",
+    "van-image": "@vant/weapp/image/index"
+  }
+}

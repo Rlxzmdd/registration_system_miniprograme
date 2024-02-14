@@ -1,0 +1,115 @@
+.full-redius {
+  border-radius: 20rpx;
+}
+
+.half-redius {
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.title-4 {
+  font-size: 40rpx !important;
+}
+
+.title-4 .title-bg {
+  top: 28rpx !important;
+  width: 180rpx !important;
+  height: 28rpx !important;
+}
+
+.room-card{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.room-card .left{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-card .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+}
+
+.room-card .middle{
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  padding: 20rpx 0 20rpx;
+  margin-left: 20rpx;
+}
+
+.room-card .middle .title-6 {
+  position: relative;
+  padding-left: 10rpx;
+  padding-bottom: 26rpx;
+  font-size: 60rpx;
+  color: #454545;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.title-6 .title-bg {
+  position: absolute;
+  top: 44rpx;
+  left: 0rpx;
+  z-index: -1;
+  background-color: #d6e1ff;
+  height: 36rpx;
+  width: 389rpx;
+}
+
+
+.room-card .middle .content {
+  color: #454545;
+  font-size: 60rpx;
+  font-weight: 600;
+  margin: 0 0 10rpx;
+}
+
+.room-card .middle .bottom {
+  font-size: 32rpx;
+  color: #b5b5b5;
+}
+
+.room-card .middle .detail{
+  display: flex;
+  align-items: center;
+  font-size: 29rpx;
+  margin-bottom: 10rpx;
+}
+
+.room-card .middle .tagList{
+  display: flex;
+  align-items: center;
+}
+
+.room-card .middle .detail .van-icon{
+  font-weight: 600;
+}
+
+.room-card .rightFunc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 160rpx;
+  border-left: 14rpx solid #d6e1ff;
+}
+
+.room-card .rightIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20rpx;
+}

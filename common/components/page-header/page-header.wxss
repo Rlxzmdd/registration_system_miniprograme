@@ -1,0 +1,17 @@
+.nav-bar-title {
+  max-width: 100%;
+}
+
+.nav-left-box {
+  display: flex;
+  align-items: center;
+  color: #595959;
+  font-size: 46rpx;
+  margin-left: 16rpx;
+}
+
+.nav-slot{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}

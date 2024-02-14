@@ -1,0 +1,30 @@
+@import 'common/style/iconfont.wxss';
+@import 'common/style/flex.wxss';
+@import './miniprogram_npm/@vant/weapp/common/index.wxss';
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+}
+
+page {
+  background-color: #F0F0F0;
+  color: #454545;
+  --ThemeColor:#d6e1ff;
+  --UnThemeColor:#FFF0D1;
+  --TipsColor:#465fA6;
+  padding-bottom: constant(safe-area-inset-bottom);
+	/*兼容 IOS<11.2*/
+	padding-bottom: env(safe-area-inset-bottom);
+	/*兼容 IOS>11.2*/
+}
+
+.container {
+  padding: 20rpx;
+}
+.container>view{
+  background-color: #fff;
+  border-radius: 20rpx;
+  /* margin-bottom: 20rpx; */
+}

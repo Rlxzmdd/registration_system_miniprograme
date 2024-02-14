@@ -1,0 +1,28 @@
+<view class="container">
+
+  <!-- 顶部信息和图片 -->
+  <view class="top-image">
+
+  </view>
+  <custom-room title_6="正在浏览的房间" content="{{roomInfo.content}}" address="{{roomInfo.address}}" time="{{roomInfo.time}}" isTag="true" isFunc="true">
+    <block wx:for="{{roomInfo.tags}}" wx:key="index">
+      <text slot="tags" class="tag">{{item}}</text>
+    </block>
+    <text slot="func" class="icon-saoma" style="font-size: 80rpx;"></text>
+    <text slot="func">扫码</text>
+  </custom-room>
+
+    <!-- 功能入口块 -->
+  <view class="func-card">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="{{item.tapEvent}}" data-key="{{item.key}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 详情块 -->
+  <custom-room title_4="使用详情" >
+  </custom-room>
+</view>

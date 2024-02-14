@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/index/index",
+    "pages/my/login/login",
+    "pages/activity/activityList/activityList",
+    "pages/activity/activityItem/activityItem",
+    "pages/activity/editActivity/editActivity",
+    "pages/activity/editPersonnel/editPersonnel",
+    "pages/activity/records/records",
+    "pages/my/law/agreement",
+    "pages/my/faq/index",
+    "pages/my/code/misc",
+    "pages/room/index/index",
+    "pages/room/applyList/applyList",
+    "common/components/custom-list/custom-list",
+    "pages/room/roomList/roomList",
+    "common/components/custom-room/custom-room",
+    "pages/room/roomDetail/roomDetail",
+    "pages/form/form",
+    "pages/form/success/success",
+    "pages/form/formList/formList",
+    "pages/notice/noticeList/noticeList",
+    "pages/students/studentDetails/studentDetails",
+    "pages/students/studentList/studentList",
+    "pages/examine/detail",
+    "pages/examine/list",
+    "pages/myClass/classesList/classesList",
+    "pages/myClass/classesInfo/classesInfo",
+    "pages/activity/activityScan/activityScan"
+  ],
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-picker": "@vant/weapp/picker/index"
+  },
+  "window": {
+    "backgroundTextStyle": "@bgTextStyle",
+    "backgroundColor": "@navBgColor",
+    "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
+    "navigationBarTitleText": "Hey东软",
+    "navigationBarTextStyle": "@navColor"
+  },
+  "darkmode": false,
+  "themeLocation": "common/style/theme.json",
+  "sitemapLocation": "sitemap.json"
+}

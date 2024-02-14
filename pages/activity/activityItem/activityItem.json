@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "custom-card": "/common/components/custom-card/custom-card",
+    "van-field": "@vant/weapp/field/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-cell": "@vant/weapp/cell/index"
+  }
+}

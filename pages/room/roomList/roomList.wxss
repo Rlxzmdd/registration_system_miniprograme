@@ -1,0 +1,9 @@
+/* 底部标签 */
+.tag{
+  border-radius: 25rpx;
+  color: #454545;
+  background-color: #f0f3fe;
+  padding: 0 10rpx;
+  margin-right: 5rpx;
+  font-size: 24rpx;
+}

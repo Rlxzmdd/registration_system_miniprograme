@@ -1,0 +1,76 @@
+<view class="container">
+  <custom-card title="你发起的活动" content="讲座《简历制作》" leftBottom="东区日新楼J102" rightBottom="14:00~17:00" class="top-card">
+    <view class="right" slot="right">
+      <view class="entrance" catchtap="openScan">
+        <text class="icon-saoma" style="font-size: 50rpx;"></text>
+        <text>扫码核销</text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 功能入口块 -->
+  <view class="func-card">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="{{item.tapEvent}}" data-key="{{item.key}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 历史活动 -->
+  <custom-card title_4="历史活动" class="history-card">
+    <view slot="content" class="history">
+      <view style="width: 100%;">
+        <block wx:for="{{3}}" wx:key="index">
+          <view class="act-item">
+            <view class="title">
+              <text class="icon-qizhi" style="color:{{index==0?'#57b788':index==1?'#f0d175':'#64b7da'}};"></text>
+              <text>讲座《会飞的人》</text>
+            </view>
+            <view class="bottom">
+              <text>@AI团委</text>
+              <text style="float: right;">2021/1/26</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="right">
+        <text class="icon-right"></text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 创建活动 -->
+  <van-popup show="{{popup.create}}" position="bottom" round bind:close="closePopup" data-key="create">
+    <custom-card title_4="创建活动">
+      <view class="" slot="content">
+        <van-field value="{{ createData.name }}" left-icon="flag-o" placeholder="活动名称" border="{{false}}"
+          bind:change="inputChange" input-class="input-class" data-key="name" center />
+        <van-row gutter="10">
+          <van-col span="12">
+            <van-field value="{{ createData.place }}" left-icon="location-o" placeholder="活动地点" border="{{false}}"
+              bind:change="inputChange" input-class="input-class" data-key="place" center />
+          </van-col>
+          <van-col span="12">
+            <van-field value="{{ createData.count }}" left-icon="friends-o" placeholder="最多人数" type="number"
+              border="{{false}}" bind:change="inputChange" input-class="input-class" data-key="count" center />
+          </van-col>
+        </van-row>
+        <van-cell icon="clock-o" border="{{false}}" value="{{createData.startTime}}" center bind:click="closePopup"
+          data-key="startTime" value-class="input-class" custom-class="cell-custom-1" />
+        <view style="padding-left: 40rpx;">
+          <van-cell border="{{false}}" value="{{createData.endTime}}" center bind:click="closePopup" data-key="endTime"
+            value-class="input-class" custom-class="cell-custom-2" />
+        </view>
+        <van-row style="text-align: center;" catchtap="confirmCreate">
+          <van-icon name='checked' color='#d6e1ff' size='3rem'></van-icon>
+        </van-row>
+      </view>
+    </custom-card>
+  </van-popup>
+  <!-- 日期时间选择器 -->
+  <van-popup show="{{popup.startTime || popup.endTime}}" position="bottom" round bind:close="closePopup"
+    data-key="{{popup.startTime?'startTime':'endTime'}}">
+    <van-datetime-picker type="datetime" value="{{ dtPicker.currentTime }}" min-date="{{ dtPicker.minDate }}"
+      max-date="{{ dtPicker.maxDate }}" bind:confirm="inputChange" bind:cancel="closePopup"
+      data-key="{{popup.startTime?'startTime':'endTime'}}" />
+  </van-popup>
+</view>

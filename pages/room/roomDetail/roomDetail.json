@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "custom-room": "/common/components/custom-room/custom-room"
+  }
+}

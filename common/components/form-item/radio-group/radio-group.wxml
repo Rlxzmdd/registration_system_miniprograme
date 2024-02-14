@@ -1,0 +1,14 @@
+<view class='form-box'>
+  <view class='box-item'>
+    <van-radio-group value="{{ currentValue }}" bind:change="radioChange" >
+      <view wx:for="{{forminfo.data}}" wx:key="index" class="radio">
+        <van-radio name="{{item.text}}" icon-size="36rpx" >{{item.text}}</van-radio>
+      </view>
+    </van-radio-group>
+    <text wx:if="{{valiRes.status != 0}}" class="icon-circle-blue" style="color: {{valiRes.status==1?'#65a1e1':valiRes.status==2?'#3ace96':'#ff595f'}};"></text>
+  </view>
+  
+  <view class="tip-box" wx:if="{{forminfo.tip}}">
+    <view>{{forminfo.tip}}</view>
+  </view>
+</view>

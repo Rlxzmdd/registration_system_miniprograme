@@ -1,0 +1,184 @@
+.all-box {
+  background-color: #F0F0F0;
+  padding-bottom: 30rpx;
+  margin-bottom: 100rpx;
+}
+
+/* 顶部切换分类 */
+.header-box {
+  color: #595959;
+  background-color: #fff;
+  font-size: 34rpx;
+  padding: 20rpx;
+  border-radius: 0px 0px 24rpx 24rpx;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.form-box {
+  color: #595959;
+}
+
+.box-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+}
+
+.tip-box {
+  color: #CACACA;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+
+.box-item .icon-circle-blue {
+  position: absolute;
+  right: 6rpx;
+  font-size: 50rpx;
+}
+
+.input-placeholder,
+.textarea-placeholder {
+  color: #c7c7c7;
+}
+
+.left-box {
+  width: 10rpx;
+  height: 30rpx;
+  background: #65A1E1;
+  border-radius: 16rpx;
+  margin-right: 18rpx;
+}
+
+/* 学生信息卡片 */
+.stu-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+
+.stu-card .img-box {
+  width: 200rpx;
+  height: 260rpx;
+  background: #C7CBD5;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+}
+
+.stu-card .info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  color: #595959;
+}
+
+.info-box .main-text {
+  margin-bottom: 20rpx;
+  letter-spacing: 1.2px;
+  font-size: 28rpx;
+}
+
+.info-box .main-text .name {
+  font-size: 48rpx;
+}
+
+.info-box view:not(.main-text) {
+  font-size: 32rpx;
+  letter-spacing: 0.8px;
+  line-height: 44rpx;
+}
+
+.info-box view:not(.main-text):nth-child(1) {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+/* 详细信息表 */
+swiper {
+  height: calc(100vh - 600rpx);
+  margin: 20rpx;
+  border-radius: 16rpx;
+}
+
+.info-container{
+  margin: 20rpx;
+  border-radius: 16rpx;
+}
+
+.info-table {
+  background: #fff;
+  padding: 20rpx;
+  margin-top: 0;
+  border-radius: 16rpx;
+}
+
+.info-table>view {
+  padding: 20rpx;
+  border-bottom: 1px solid #F8F8F8;
+}
+
+.info-table>view>text:nth-child(1) {
+  font-size: 36rpx;
+  font-weight: 600;
+  flex: 1;
+}
+
+.info-table>view>text:nth-child(2) {
+  font-size: 32rpx;
+  flex: 3;
+  text-align: right;
+  /* color: #CACACA; */
+}
+
+.click{
+  text-decoration: underline;
+  color: #65a1e1;
+}
+
+/* 底部盒子 */
+
+.bottom-box {
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 30rpx 0rpx 48rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  height: 100rpx;
+  text-align: center;
+
+}
+
+.bottom-button {
+  font-size: 36rpx;
+  width: 200rpx;
+  height: 80rpx !important;
+}
+van-button .bottom-button:first-child{
+  margin-right: 15rpx;
+}
+/* 驳回弹窗 */
+.reject-content {
+  margin: 36rpx;
+}
+
+.reject-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.reject-input .van-cell{
+  background-color: #F0F0F0;
+  border-radius: 16rpx;
+  margin: 30rpx 0;
+}
+.reject-input textarea{
+  min-height: 200rpx;
+}

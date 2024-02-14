@@ -1,0 +1,16 @@
+<view class='time-axis-container'>
+  <!--  左边 -->
+  <view class='left-box flex-column flex-center'>
+    <view class='{{isCurent===true?"round-view":"out-round-view"}}'></view>
+    <view wx:if="{{showLeftLine}}" class='{{isCurent === true? "left-line" : "out-left-line"}}'>
+    </view>
+  </view>
+
+  <!-- 右边 -->
+  <view class='right-box'>
+    <text wx:if="{{axisTitle!=''}}" class='title'>{{axisTitle}}</text>
+    <view class="right-container">
+      <slot name="rightContent"></slot>
+    </view>
+  </view>
+</view>

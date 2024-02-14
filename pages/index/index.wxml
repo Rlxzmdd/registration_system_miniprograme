@@ -1,0 +1,83 @@
+<page-header title="首页" isBack="{{false}}"></page-header>
+<!-- 顶部信息块 -->
+<view class="container">
+  <custom-card title="Hey 东软学子" content="作业写完了么？" leftBottom="温馨小提示">
+    <view class="right" slot="right">
+      <view class="entrance" bindtap="toPage" data-url="codeMisc">
+        <text class="icon-qr_code" style="font-size: 50rpx;"></text>
+        <text>信息码</text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 功能入口块 -->
+  <view class="func-card">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="toPage" data-url="{{item.urlName}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.routeName}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 已填表单 -->
+  <custom-card title_4="已填表单" wx:if="{{mySubmitForm && mySubmitForm.total>0}}">
+    <view class="list-box" slot="content">
+      <block wx:for="{{mySubmitForm.list}}" wx:key="index">
+        <view class="list-item flex-row justify-between" bindtap="clickForm" data-index="{{index}}">
+          <view class="title-box flex-column">
+            <text class="title">{{item.title}}</text>
+            <text class="min-title" wx:if="{{item.auditName}}">{{'审核人: '+item.auditName}}</text>
+            <text class="min-title" wx:if="{{item.opinion}}">{{'审核意见: '+item.opinion}}</text>
+          </view>
+          <view class="right-box flex-column">
+            <van-icon class-prefix="{{item.icon?'icon':'van-icon'}}" name="{{item.icon || item.vanIcon}}" size='56rpx' />
+            <text class="text">{{item.iconText}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </custom-card>
+  <!-- 最新公告 -->
+  <custom-card title_4="最新公告">
+    <view class="notice-container" slot="content" bindtap="toPage" data-url="noticeList" wx:if="{{latestNotice}}">
+      <view class="title">{{latestNotice.title}}</view>
+      <text user-select decode class="content van-multi-ellipsis--l3">
+        {{latestNotice.content}}
+      </text>
+      <view class="img-box flex-row">
+        <block wx:for="{{latestNotice.images}}" wx:key="index">
+          <van-image fit="cover" width="195rpx" height="195rpx" src="{{item.url}}" lazy-load show-menu-by-longpress radius="10" class="van-image" catchtap="imgClick" data-index="{{index}}" />
+        </block>
+      </view>
+      <view class="bottom-text">
+        <text wx:if="{{latestNotice.publisher}}">@{{latestNotice.publisher}} 于</text>
+        <text wx:if="{{latestNotice.releaseTime}}">{{latestNotice.releaseTime}} 发布</text>
+      </view>
+    </view>
+    <view slot="content" class="empty-box notice-container" wx:if="{{!latestNotice}}">暂无公告</view>
+  </custom-card>
+  <!-- 数据统计 -->
+  <custom-card title_4="新生数据" wx:if="{{false}}">
+    <view class="data-content flex-row justify-between" slot="content">
+      <block wx:for="{{dataStatistics}}" wx:key="index">
+        <view class="content-item flex-column flex-center">
+          <text>{{item.data}}</text>
+          <text>{{item.text}}</text>
+        </view>
+      </block>
+    </view>
+  </custom-card>
+  <!-- 待办事项 -->
+  <custom-card title_4="待办事项" wx:if="{{todoList}}" wx:if="{{false}}">
+    <view class="todo-container" slot="content">
+      <block wx:for="{{todoList}}" wx:key="index">
+        <view class="todo-item" bindtap="handleTodo" data-index="{{index}}">
+          <view class="title">{{item.title}}</view>
+          <view class="justify-between">
+            <view class="bottom-left">{{item.releaseTime}}</view>
+            <view class="bottom-right">{{item.tip}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </custom-card>
+</view>

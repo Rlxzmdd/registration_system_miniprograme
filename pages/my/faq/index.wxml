@@ -1,0 +1,27 @@
+<view class="card ">
+    <view class="title"> FAQ<view class="titleBg"></view></view>
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+        <van-collapse-item title="为什么总是登录不上？" name="1">
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+        <van-collapse-item title="忘记密码怎么办" name="2">
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+        <van-collapse-item title="哪里是用户名密码输入" name="3" >
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+        <van-collapse-item title="有人抢占了我的账号" name="4" >
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+        <van-collapse-item title="我是外籍学生" name="5" >
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+        <van-collapse-item title="以上没有我遇到的问题" name="6" >
+            xxxxxxxxxxxxxxxxxxx
+        </van-collapse-item>
+    </van-collapse>
+</view>
+    <view class="contact">
+        <van-button type="info" open-type='feedback' plain block>向开发团队反馈BUG</van-button>
+    </view>
+    

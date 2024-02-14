@@ -1,0 +1,56 @@
+<page-header title='表单信息审核' open-slot>
+  <view slot="content">
+    <view class="header-box">
+      <text-input id="{{searchParams.id}}" forminfo="{{searchParams}}">
+        <view slot="left-box" class="left-box"></view>
+        <view slot="right-box" class="right-box" bindtap="searchClick">
+          <text class="icon-xiayibu" style="color: #65a1e1; font-size: 40rpx;"></text>
+        </view>
+      </text-input>
+    </view>
+  </view>
+</page-header>
+
+
+<view class="all-box">
+  <!-- <swiper bindchange="swiperChange"> -->
+  <view class="info-container">
+    <block wx:if="{{formData}}">
+      <!-- <swiper-item style="border-radius: 16rpx;"> -->
+      <view class="info-table">
+        <block wx:for="{{formData}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+          <view class="justify-between" wx:if="{{key!='image'}}">
+            <text>{{dict[key]?dict[key]:key}}</text>
+            <text>{{value}}</text>
+          </view>
+          <view class="justify-between" wx:if="{{key=='image'}}">
+            <text>{{dict[key]?dict[key]:key}}</text>
+            <text bindtap="viewImage" class="click">点击查看</text>
+          </view>
+        </block>
+      </view>
+      <!-- </swiper-item> -->
+    </block>
+    <block wx:if="{{!formData}}">
+      <van-empty image="error" description="没有数据" />
+    </block>
+    <!-- </swiper> -->
+  </view>
+</view>
+
+<view class="bottom-box" wx:if="{{auditList[0].status=='wait'}}">
+  <van-button bind:click="passAudit" custom-class="bottom-button" round color="#65A1E1" type="info"
+    disabled="{{!formInfo}}">通过</van-button>
+  <van-button bind:click="showPopup" custom-class="bottom-button" round color="#E16565" plain type="info"
+    disabled="{{!formInfo}}">驳回
+  </van-button>
+</view>
+<van-popup show="{{ show }}" closeable close-icon="close" position="bottom" custom-style="min-height: 10%" round
+  bind:close="onClose">
+  <view class="reject-content">
+    <view class="reject-title">审核驳回</view>
+    <van-field class="reject-input" label="驳回原因" type="textarea" placeholder="该原因将反馈到用户, 请填写具体驳回原因。" autosize
+      border="{{ true }}" bind:blur="rejectReaChange" bind:input="rejectReaChange" bind:confirm="rejectReaChange" />
+    <van-button icon="cross" bind:tap="failAudit" block color="#E16565" type="info">驳回</van-button>
+  </view>
+</van-popup>

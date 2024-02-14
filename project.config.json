@@ -1,0 +1,131 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": true,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": true,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ],
+    "minifyWXSS": true,
+    "showES6CompileOption": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.16.0",
+  "appid": "wxe3cc9d470f5b834c",
+  "projectname": "HeyNUIT",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "登录页",
+          "pathName": "pages/my/login/login",
+          "query": "",
+          "scene": 1011
+        },
+        {
+          "name": "活动",
+          "pathName": "pages/activity/activity",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "管理活动",
+          "pathName": "pages/activity/editActivity/editActivity",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "用户协议",
+          "pathName": "pages/my/law/agreement",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问题FAQ",
+          "pathName": "pages/my/faq/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "信息码",
+          "pathName": "pages/my/code/misc",
+          "query": ""
+        },
+        {
+          "name": "活动列表",
+          "pathName": "pages/activity/activityList/activityList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "绑定手机",
+          "pathName": "pages/my/bind",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "核销记录",
+          "pathName": "pages/activity/records/records",
+          "query": "id=21",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

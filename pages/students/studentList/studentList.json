@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "text-input": "/common/components/form-item/text-input/text-input",
+    "page-header": "/common/components/page-header/page-header",
+    "custom-card": "/common/components/custom-card/custom-card"
+  }
+}

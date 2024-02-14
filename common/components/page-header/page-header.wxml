@@ -1,0 +1,13 @@
+<!-- 顶部导航栏占位 -->
+<van-nav-bar id="navBar" fixed placeholder border="{{false}}" z-index="99"
+  custom-style="border-radius: {{openSlot ?  '0' : '0 0 24rpx 24rpx'}}; {{openSlot?'':'box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);'}}"
+  title-class="nav-bar-title">
+  <view class="nav-left-box" slot="title" bindtap="{{isBack?'back':''}}">
+    <van-icon name="arrow-left" size="42rpx" wx:if="{{isBack}}" />
+    <text>{{title}}</text>
+  </view>
+</van-nav-bar>
+<view id="navSlot" class="nav-slot" wx:if="{{openSlot}}" style="top: {{navHeight}}px;">
+  <slot name="content"></slot>
+</view>
+<view style="width: 100%; height: {{slotHeight}}px;" wx:if="{{openSlot}}"></view>

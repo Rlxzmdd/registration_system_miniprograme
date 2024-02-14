@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+  }
+}

@@ -1,0 +1,15 @@
+<!--components/region-picker/region-picker.wxml-->
+<view class='form-box'>
+  <view class='box-item'>
+    <picker mode="region" bindchange="confirm" value="{{currentValue}}" custom-item="{{customItem}}">
+      <view class="picker-text" style="color: {{input_text?'':'#c7c7c7'}};">
+        {{input_text ? input_text : forminfo.placeholder}}
+      </view>
+    </picker>
+    <text wx:if="{{valiRes.status != 0}}" class="icon-circle-blue" style="color: {{valiRes.status==1?'#65a1e1':valiRes.status==2?'#3ace96':'#ff595f'}};"></text>
+  </view>
+
+  <view class="tip-box" wx:if="{{forminfo.tip}}">
+    <view>{{forminfo.tip}}</view>
+  </view>
+</view>

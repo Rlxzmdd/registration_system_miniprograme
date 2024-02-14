@@ -1,0 +1,20 @@
+<view class="top-card {{halfredius ? 'half-redius' : 'full-redius'}}">
+  <view class="left">
+    <view class="title {{title_4 ? 'title-4':''}}"  wx:if="{{title || title_4}}">
+      {{title || title_4}}
+      <view class="title-bg"></view>
+    </view>
+    <view class="icon" wx:if="{{icon}}">
+				<image src="../../../static/logo.png" class="SZPT_Icon"></image>
+    </view>
+    <view class="content" wx:if="{{content}}">
+      {{content}}
+    </view>
+    <slot name="content" wx:if="{{!content}}"></slot>
+    <view class="bottom" wx:if="{{leftBottom || rightBottom}}">
+      <text>{{leftBottom}}</text>
+      <text style="float: right;">{{rightBottom}}</text>
+    </view>
+  </view>
+  <slot name="right"></slot>
+</view>

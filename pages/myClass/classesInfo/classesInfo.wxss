@@ -1,0 +1,169 @@
+/* 顶部切换分类 */
+.header-box {
+  background-color: #fff;
+  border-radius: 0 0 24rpx 24rpx;
+  padding: 20rpx;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  color: #595959;
+  background-color: #f4f4f4;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+}
+
+.header .curr-cate {
+  color: #65A1E1;
+}
+
+/* 中间内容区域 */
+.all-box {
+  background-color: #F0F0F0;
+}
+
+/* 首页 */
+.home-container{
+  padding: 20rpx;
+}
+/* 数据统计 */
+.home-container .title-4 .title-bg{
+  width: 260rpx !important;
+}
+
+.data-content {
+  padding-top: 14rpx;
+  padding-bottom: 20rpx;
+  color: #595959;
+}
+
+.data-content .top-card .left .title {
+  padding-bottom: 0 !important;
+}
+
+.data-content .content-item {
+  margin-bottom: 20rpx;
+}
+
+.data-content .content-item>text:nth-child(1) {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.data-content .content-item>text:nth-child(2) {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+}
+
+/* 列表 */
+.list-box {
+  padding: 20rpx;
+}
+
+.stu-box {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 40rpx;
+}
+
+.stu-box .name {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #595959;
+  margin-bottom: 8rpx;
+}
+
+.stu-box .bottom {
+  font-size: 28rpx;
+  color: #CACACA;
+}
+
+/* 学生信息卡片 */
+.stu-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+
+.stu-card .img-box {
+  width: 200rpx;
+  height: 260rpx;
+  background: #C7CBD5;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.img-box image{
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.stu-card .info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  color: #595959;
+}
+
+.info-box .main-text {
+  margin-bottom: 20rpx;
+  letter-spacing: 1.2px;
+  font-size: 28rpx;
+}
+
+.info-box .main-text .name {
+  font-size: 48rpx;
+}
+
+.info-box view:not(.main-text) {
+  font-size: 32rpx;
+  letter-spacing: 0.8px;
+  line-height: 44rpx;
+}
+
+.info-box view:not(.main-text):nth-child(1) {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+
+/* 底部按钮 */
+.bottom-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px -2px 4px 2px rgba(198, 198, 198, 0.25);
+  border-radius: 8px 8px 0px 0px;
+  padding-bottom: constant(safe-area-inset-bottom);
+	/*兼容 IOS<11.2*/
+	padding-bottom: env(safe-area-inset-bottom);
+	/*兼容 IOS>11.2*/
+}
+
+.button-next {
+  margin: 0 20rpx;
+  height: 80rpx  !important;
+  width: 300rpx;
+}
+
+.button-previous {
+  margin: 0 20rpx;
+  height: 80rpx  !important;
+  width: 300rpx;
+}

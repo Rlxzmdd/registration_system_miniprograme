@@ -1,0 +1,37 @@
+<page-header title="{{'连续核销'}}"></page-header>
+
+<view class="scan-container">
+  <view class="scan-top">
+    <!-- 活动信息 -->
+    <view class="top-title">
+    <text>{{title}}</text>
+    <!-- <text class="icon-light icon">灯</text> -->
+    </view>
+    <!-- 相机原生组件 层级最高 无法使用装饰样式 -->
+    <camera class="top-camera" mode="scanCode" frame-size="medium" resolution="medium" flash="off" device-position="back" binderror="error" bindscancode="scanQrCode">
+    </camera> 
+  </view>
+  <view class="scan-data">
+
+  </view>
+  <!-- 当前核销记录 -->
+  <custom-card title_4="核销记录" class="scan-examine-list">
+    <view slot="content" class="record" bindtap="toPage">
+      <view style="width: 100%;">
+        <view class="none" wx:if="{{tmpExamineInfo.length == 0}}">
+        暂无记录
+        </view>
+        <block wx:for="{{3}}" wx:key="index" wx:if="{{tmpExamineInfo[index]}}">
+          <view class="rec-item">
+            <view class="title">
+              <text>#{{tmpExamineInfo[index].num +" " +tmpExamineInfo[index].number || '...'}}</text>
+            </view>
+            <view class="bottom">
+              <text >{{tmpExamineInfo[index].time}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </custom-card>
+</view>

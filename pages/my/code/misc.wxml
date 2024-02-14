@@ -1,0 +1,61 @@
+<page-header title="信息码"></page-header>
+<view class="container1">
+  <view class="top">
+    <custom-title title="Hey东软信息码" style="margin-bottom:10rpx" content="二维码不能截图使用，点击上方收藏小程序方便快速调出" iconHealth="true"></custom-title>
+    <view class="MIS-code">
+      <image bindtap="GetInfoCode" class="qrcode" src="{{imgData}}"></image>
+      <!-- <view class="JumpApp" name='111' bind:tap="showItem" wx:if="{{true}}">
+        <text class="icon-zhuanhuan" style="font-size:1.5rem; float: left;padding-left: 15rpx;"></text>
+        点击获取医疗码
+      </view> -->
+      <view>{{Time}}</view>
+    </view>
+  </view>
+  <custom-card wx:if="{{userData.name}}" title="{{userData.college}}" leftBottom="No.{{userData.number}}" class="top-card">
+    <view class="info" slot="content">
+      <view>{{userData.classes}}</view>
+      <view style="font-size:1.2rem">{{userData.name}}</view>
+    </view>
+    <view class="right" slot="right">
+      <view class="entrance flex-center flex-column" bindtap="viewMyInfo">
+        <image src="../../../static/renzheng.png" class="P_Icon" wx:if="{{userData.name}}"></image>
+        <!-- <text class="icon-gerenrenzheng1" style="font-size: 50rpx;"></text> -->
+        <text decode>点击查看\n我的信息</text>
+      </view>
+    </view>
+  </custom-card>
+  <custom-card title_4="核销记录" class="record-card">
+    <view slot="content" class="record">
+      <view style="width: 100%;">
+        <van-empty wx:if="{{EliminateData.length == 0}}" description="您还没有核销记录哦～" />
+        <block wx:for="{{EliminateData}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="rec-item">
+            <view class="title">
+              <text class="">#{{item.serialNum}}</text>
+              <text>{{item.title}}</text>
+            </view>
+            <view class="bottom">
+              <text>核销人@{{item.examinerName}}</text>
+              <text style="float: right;">{{item.examineTime}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <!-- <view class="right">
+        <text class="icon-right"></text>
+      </view> -->
+    </view>
+  </custom-card>
+  <van-action-sheet show="{{ShowNoScreen}}" bind:close="onClose">
+    <view class="s-content">
+      <view style="font-size:1.5rem;font-weight:bold;">提醒</view>
+      <view style="margin-bottom:0.5rem">信息码是动态生成的截图会失效哦</view>
+      <view style="margin-bottom:0.5rem"></view>
+      <!-- <view>为了确认您的联系方式是正确无误的</view> -->
+      <!-- <view>请授权获取您的微信绑定手机号</view> -->
+      <!-- <view class="title"> 联系团队<view class="titleBg"></view></view> -->
+    </view>
+    <van-button type="info" color="#465fA6" block bind:tap="onClose">关闭</van-button>
+  </van-action-sheet>
+  <van-action-sheet show="{{ShowJumpSelect}}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
+</view>

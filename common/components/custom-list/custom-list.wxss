@@ -1,0 +1,46 @@
+.full-redius {
+  border-radius: 20rpx;
+}
+
+.half-redius {
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.list-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  margin-bottom: 20rpx;
+}
+
+.list-card .left{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40rpx 40rpx;
+}
+
+.list-card .left .name{
+  padding-left: 10rpx;
+  font-size: 45rpx;
+  color: #454545;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.list-card .left .bottom{
+  padding-left: 10rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #b6b6b6;
+}
+
+.list-card .right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 160rpx;
+}

@@ -1,0 +1,84 @@
+.reports-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: auto;
+  padding: 30rpx;
+  margin: 20rpx 0;
+  background-color: #fff;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 48rpx;
+  color: #595959;
+}
+
+.title .icon {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: #F8F8F8;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60rpx;
+  color: #65a1e1;
+  font-size: 50rpx;
+}
+
+.create-date {
+  color: #CACACA;
+  font-size: 24rpx;
+  margin: 20rpx 0;
+}
+
+.intro {
+  color: #CACACA;
+  font-size: 28rpx;
+}
+
+.form-item {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.label {
+  font-size: 42rpx;
+  font-weight: 400;
+  margin-bottom: 20rpx;
+}
+
+.bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px -2px 4px 2px rgba(198, 198, 198, 0.25);
+  border-radius: 8px 8px 0px 0px;
+  padding-bottom: constant(safe-area-inset-bottom);
+	/*兼容 IOS<11.2*/
+	padding-bottom: env(safe-area-inset-bottom);
+	/*兼容 IOS>11.2*/
+}
+
+.reports-form-btn {
+  width: 324rpx;
+  height: 80rpx;
+  display: inline-table;
+  background-color: #65A1E1;
+  border-radius: 40px;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  letter-spacing: 2px;
+}

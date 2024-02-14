@@ -1,0 +1,73 @@
+<page-header title='表单填报' open-slot>
+  <view slot="content">
+    <view class="header-box">
+      <view class="header">
+        <block wx:for="{{category}}" wx:key="index">
+          <view class="cate-item {{currCateIdx==index?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+            data-key="{{item.key}}">
+            {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</page-header>
+
+<view class="all-box">
+  <view class="list-box">
+    <view class="page-box">
+      <block wx:for="{{listData[category[currCateIdx].key]['p'+listInfo.current]}}" wx:key="id">
+        <view class="page-item flex-row justify-between" bindtap="clickForm" data-index="{{index}}">
+          <view class="title-box flex-column">
+            <text class="title">{{item.title}}</text>
+            <text class="min-title">{{item.minTitle}}</text>
+          </view>
+          <view class="right-box flex-column">
+            <van-icon class-prefix="{{item.icon?'icon':'van-icon'}}" name="{{item.icon || item.vanIcon}}"
+              size='60rpx' />
+            <text class="text">{{item.iconText}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{!listData[category[currCateIdx].key].p1.length > 0}}">
+      <van-empty image="search" description="空空如也" />
+    </block>
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="bottom-box">
+  <van-button bind:tap="previousPage" custom-class="button-previous" plain round color="#65A1E1" type="info"
+    disabled="{{listInfo.current<=1}}">上一页
+  </van-button>
+  <van-button bind:tap="nextPage" custom-class="button-next" round color="#65A1E1" type="info"
+    disabled="{{listInfo.current>=listInfo.pages}}">下一页
+  </van-button>
+</view>
+<view style="width: 100%;height: 140rpx;"></view>
+
+
+<!-- 表单内容弹出层 -->
+<van-popup round custom-style="width: 90%;" show="{{ popup.table }}" bind:close="switchPopup"
+  data-key="table">
+  <view class="info-container">
+    <block wx:if="{{formContainer}}">
+      <view class="info-table">
+        <block wx:for="{{formContainer.formData}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+          <view class="justify-between" wx:if="{{key!='image'}}">
+            <text>{{dict[key]?dict[key]:key}}</text>
+            <text>{{value}}</text>
+          </view>
+          <view class="justify-between" wx:if="{{key=='image'}}">
+            <text>{{dict[key]?dict[key]:key}}</text>
+            <text bindtap="viewImage" class="click">点击查看</text>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{!formContainer}}">
+      <van-empty image="error" description="没有数据" />
+    </block>
+  </view>
+</van-popup>

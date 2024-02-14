@@ -1,0 +1,119 @@
+/* 顶部切换分类 start */
+.header-box {
+  background-color: #fff;
+  border-radius: 0 0 24rpx 24rpx;
+  padding: 20rpx;
+  box-shadow: 0px 2rpx 4rpx 0px rgba(198, 198, 198, 0.5);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  color: #595959;
+  background-color: #f4f4f4;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+}
+
+.header .curr-cate {
+  color: #65A1E1;
+}
+/* 顶部切换分类 end */
+
+.top-button{
+  margin: 0 auto;
+  height: 80rpx !important;
+  width: 90%;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+
+.notice-container {
+  margin-top: 30rpx;
+  letter-spacing: 0.6px;
+  margin-bottom: 20rpx;
+}
+
+.notice-content {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.notice-content .title {
+  line-height: 44rpx;
+  margin-bottom: 10rpx;
+  font-weight: 600;
+}
+
+.notice-content .content {
+  font-size: 28rpx;
+  /* color: #757575; */
+  line-height: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.img-box>.van-image {
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.img-box>.van-image:nth-child(3) {
+  margin-right: 0 !important;
+}
+
+.notice-content .tip {
+  font-size: 26rpx;
+  color: #CACACA;
+  line-height: 34rpx;
+}
+
+.btn {
+  width: 300rpx;
+  height: 80rpx;
+  display: inline-table;
+  background-color: #F8F8F8;
+  border-radius: 40px;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #65A1E1;
+  text-align: center;
+  line-height: 80rpx;
+  letter-spacing: 2px;
+}
+
+
+/* 底部按钮 */
+.bottom-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px -2px 4px 2px rgba(198, 198, 198, 0.25);
+  border-radius: 8px 8px 0px 0px;
+  padding-bottom: constant(safe-area-inset-bottom);
+  /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom);
+  /*兼容 IOS>11.2*/
+}
+
+.button-next {
+  margin: 0 20rpx;
+  height: 80rpx !important;
+  width: 300rpx;
+}
+
+.button-previous {
+  margin: 0 20rpx;
+  height: 80rpx !important;
+  width: 300rpx;
+}

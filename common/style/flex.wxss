@@ -1,0 +1,39 @@
+/* 水平排列 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* 垂直排列 */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 垂直居中 */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 左右分布(两边无边距) */
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 均匀分布 */
+.justify-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* 左右两边边距为中间的1/2 */
+.justify-around {
+  display: flex;
+  justify-content: space-around;
+}

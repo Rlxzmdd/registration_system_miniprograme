@@ -1,0 +1,235 @@
+.container {
+  padding: 20rpx;
+}
+
+.top-card,
+.func-card,
+.content-card {
+  box-shadow: 0rpx 0rpx 10rpx rgba(166, 166, 166, 0.15);
+}
+
+.container>view {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+
+.empty-box {
+  padding: 30rpx !important;
+  color: #CACACA !important;
+  text-align: center;
+}
+
+/* 顶部信息块 */
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 190rpx;
+  border-left: 14rpx solid #d6e1ff;
+}
+
+.entrance text {
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
+  color: #595959;
+  font-weight: 600;
+  padding-top: 10rpx;
+}
+
+/* 信息码 */
+.code-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500rpx;
+  height: 600rpx;
+}
+
+/* 功能入口块 */
+.func-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 40rpx;
+}
+
+.func-card .func {
+  padding: 40rpx 24rpx 0 24rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #595959;
+  font-weight: 500;
+}
+
+.func text {
+  display: block;
+  font-weight: 600;
+}
+
+.func text[class*='icon-'] {
+  font-size: 46rpx;
+  margin-bottom: 8rpx;
+}
+
+/* 内容信息块 */
+.content-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 310rpx;
+}
+
+.content-card .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16rpx 28rpx;
+}
+
+.content-card .left .title {
+  position: relative;
+  background-color: #d6e1ff;
+  height: 30rpx;
+  width: 184rpx;
+  margin-top: 30rpx;
+}
+
+.content-card .left .title>text {
+  position: absolute;
+  top: -40rpx;
+  left: 14rpx;
+  margin-top: 15rpx;
+  font-size: 40rpx;
+  color: #454545;
+  font-weight: 600;
+}
+
+.content-card .left .content {
+  color: #595959;
+  font-weight: 600;
+}
+
+/* 数据统计 */
+.data-content {
+  padding-top: 14rpx;
+  padding-bottom: 20rpx;
+  color: #595959;
+}
+
+.data-content .top-card .left .title {
+  padding-bottom: 0 !important;
+}
+
+.data-content .content-item {
+  margin-bottom: 20rpx;
+}
+
+.data-content .content-item>text:nth-child(1) {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.data-content .content-item>text:nth-child(2) {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+}
+
+/* 最新公告 */
+.notice-container,
+.todo-item,
+.list-item {
+  color: #595959;
+  background: #F8F8F8;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.notice-container .title {
+  font-size: 36rpx;
+  font-weight: 600;
+  font-family: PingFangSC-Regular, PingFang SC;
+  line-height: 44rpx;
+  margin-bottom: 10rpx;
+}
+
+.notice-container .content {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  line-height: 30rpx;
+  margin-bottom: 10rpx;
+  letter-spacing: 0.8px;
+}
+
+.notice-container .img-box>.van-image {
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.notice-container .img-box>.van-image:nth-child(3) {
+  margin-right: 0 !important;
+}
+
+.notice-container .bottom-text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  line-height: 34rpx;
+  color: #CACACA;
+}
+
+/* 已填表单 */
+.list-box .page-item {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.list-item{
+  flex-wrap: nowrap;
+}
+
+.list-item .title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.list-item .min-title {
+  font-size: 28rpx;
+  color: #CACACA;
+}
+
+.list-item .right-box{
+  padding-left: 10rpx;
+}
+
+.list-item .right-box .text {
+  font-size: 24rpx;
+  color: #595959;
+  line-height: 34rpx;
+  margin-top: 4rpx;
+}
+
+/* 待办事项 */
+.todo-item .title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.todo-item .bottom-left,
+.todo-item .bottom-right {
+  color: #CACACA;
+  font-size: 28rpx;
+}
+
+.todo-item .bottom-right {
+  font-weight: 600;
+}
+
+/* 按钮盒子 */
+.bottom-box {
+  padding: 40rpx;
+}

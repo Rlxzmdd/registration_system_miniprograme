@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "page-header": "../../../common/components/page-header/page-header",
+    "custom-card": "/common/components/custom-card/custom-card"
+  }
+}

@@ -1,0 +1,58 @@
+<view class="container">
+  <!-- 筛选列表 -->
+  <custom-card title_4="筛选列表">
+    <view slot="content">
+      <view bindtap="switchPopup" data-popupkey="picker" class="search">
+        <view class="search-input">
+          <van-icon name="search" color="#B5B5B5" size="36rpx" style="padding: 0 4rpx 0 20rpx;"></van-icon>
+          <view class="serach-picker-input">
+            <text>按班级筛选: </text>
+            <text style="margin-left: 10rpx;">{{filterRes || '点击选择班级'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 人数 -->
+  <van-transition show="{{activityData.elimCount}}" name="slide-left">
+    <custom-card title_4="已核销数">
+      <view slot="content" class="elim-count">
+        <text>{{activityData.elimCount}}</text>
+      </view>
+    </custom-card>
+  </van-transition>
+  <!-- 核销记录 -->
+  <custom-card title_4="核销记录" class="record-card">
+    <view slot="content" class="record">
+      <view style="width: 100%;">
+        <block wx:for="{{elimData.data['p'+ (currPage-1)]}}" wx:key="index">
+          <view class="rec-item" wx:if="{{item}}">
+            <view class="title">
+              <text class="">#{{item.serialNum}} </text>
+              <!-- <text class="">#{{(currPage - 1) * 10 + index + 1}} </text> -->
+              <text>{{item.examinedName || '...'}}</text>
+              <text wx:if="{{item.examinerName}}" class="mini-text">核销人: {{item.examinerName}}</text>
+            </view>
+            <view class="bottom">
+              <text>{{item.examineTime || '暂无'}}</text>
+              <text style="float: right;">{{item.examinedCollege}}</text>
+            </view>
+          </view>
+        </block>
+        <van-empty image="error" description="没有数据" wx:if="{{elimData.data['p'+(currPage-1)].length<1}}" />
+      </view>
+    </view>
+  </custom-card>
+
+  <!-- 页数步进器 -->
+  <view class="stepper-view" wx:if="{{elimData.data['p0'].length>=10}}">
+    <van-stepper value="{{ currPage }}" min="1" integer input-width="100rpx"
+      button-size="72rpx" bind:change="stepperChange" custom-class="stepper" />
+  </view>
+</view>
+
+<!-- 筛选弹出框 -->
+<van-popup show="{{popup.picker}}" position="bottom" round bind:click-overlay="switchPopup" data-popupkey="picker">
+  <van-picker columns="{{ pickerOptions }}" show-toolbar bind:change="filterChange" bind:confirm="filterConfirm"
+    bind:cancel="switchPopup" data-popupkey="picker" />
+</van-popup>

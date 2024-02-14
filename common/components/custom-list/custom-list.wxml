@@ -1,0 +1,13 @@
+<view class="list-card full-redius">
+  <view class="left">
+    <view class="name">
+      {{name}}
+    </view>
+    <view class="bottom">
+      <text>{{date}}</text>
+    </view>
+  </view>
+  <view class="right">
+      <slot class="icon" name="right"></slot>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<view class="room-card {{halfredius ? 'half-redius' : 'full-redius'}}">
+  <view class="left">
+    <view class="image" wx:if="{{imagePath}}">
+      <image src="{{imagePath}}" style="height:170rpx; width:170rpx"></image>
+    </view>
+    <view class="middle">
+      <view class="title-6 {{title_4 ? 'title-4':''}}" wx:if="{{title_6 || title_4}}">
+        {{title_6 || title_4}}
+        <view class="title-bg"></view>
+      </view>
+      <view class="content" wx:if="{{content.text}}">
+        {{content.text}}
+      </view>
+      <slot name="content"></slot>
+      <view class="detail" wx:if="{{address}}">
+        <van-icon name="location-o" />
+        {{address}}
+      </view>
+      <view class="detail" wx:if="{{time}}">
+        <van-icon name="clock-o" />
+        工作日 {{time}}
+      </view>
+      <view class="tagList" wx:if="{{isTag}}">
+        <!-- 插入的tag记得添加tag样式 -->
+        <slot name="tags"></slot>
+      </view>
+      <view class="bottom" wx:if="{{bottom}}">
+        <text>{{bottom}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="rightIcon" wx:if="{{isIcon}}">
+    <slot name="icon"></slot>
+  </view>
+  <view class="rightFunc" wx:if="{{isFunc}}">
+    <slot name="func"></slot>
+  </view>
+
+
+
+</view>
+
+
+<van-popup>
+  <van-transition show="{{step == 1}}" custom-class="block">
+    <view> </view>
+  </van-transition>
+  <view wx:if="{{step == 2}}"></view>
+  <view wx:if="{{step == 3}}"></view>
+</van-popup>

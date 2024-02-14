@@ -1,0 +1,15 @@
+{
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundColor": "#f0f0f0",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "custom-card": "/common/components/custom-card/custom-card",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "page-header": "/common/components/page-header/page-header"
+  }
+}

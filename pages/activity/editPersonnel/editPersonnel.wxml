@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 添加管理员 -->
+  <custom-card title_4="添加管理员">
+    <view slot="content">
+      <view class="search">
+        <view class="search-input">
+          <van-icon name="search" color="#B5B5B5" size="36rpx" style="padding: 0 4rpx 0 20rpx;"></van-icon>
+          <van-field value="{{ addData.number }}" placeholder="输入学号/工号" border="{{false}}" bind:change="inputChange"
+            input-class="add-input" data-source="addData" data-key="number" center custom-style="padding: 0px;"
+            style="width: 100%;" />
+        </view>
+        <van-button bind:click="clickSearch" type="primary" size="normal"
+          color="{{!addData.number?'#d6e1ff':'#9cb7ff'}}" custom-class="search-btn">搜索
+        </van-button>
+      </view>
+      <view class="search-res" wx:if="{{searchRes}}">
+        <view>
+          <view class="name">{{searchRes.name}}</view>
+          <view class="type">{{searchRes.type}}</view>
+        </view>
+        <van-icon catchtap="clickAdd" name="add-o" size="60rpx" color="#595959"></van-icon>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 管理名单 -->
+  <custom-card title_4="管理名单">
+    <view class="record" slot="content">
+      <block wx:for="{{activityData.adminInfo}}" wx:key="index">
+        <van-swipe-cell bind:click="clickSwiperCell" data-index="{{index}}" right-width="{{ 65 }}" style="width: 100%;">
+          <view class="rec-item">
+            <view class="title">
+              <text class="">#{{index+1}} </text>
+              <text>{{item.type == "student"?"学生":"教师"}} {{item.name}}</text>
+            </view>
+            <view class="bottom">
+              <text>已核销 {{item.num}} 人 / {{item.inviteTime}}</text>
+              <!-- <text style="float: right;">2021/1/26</text> -->
+            </view>
+          </view>
+          <view slot="right" class="delete-btn">删除</view>
+        </van-swipe-cell>
+      </block>
+
+    </view>
+  </custom-card>
+</view>

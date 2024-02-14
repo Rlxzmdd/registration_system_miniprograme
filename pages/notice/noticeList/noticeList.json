@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "time-axis": "/common/components/time-axis/time-axis",
+    "van-image": "@vant/weapp/image/index",
+    "page-header": "/common/components/page-header/page-header"
+  }
+}

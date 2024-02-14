@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "custom-card":"/common/components/custom-card/custom-card"
+  }
+}

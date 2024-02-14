@@ -1,0 +1,32 @@
+
+/* 组件中公共样式 */
+.form-box{
+  color: #595959;
+}
+.box-item{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+}
+.tip-box{
+  color: #CACACA;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+.box-item .icon-circle-blue{
+  position: absolute;
+  right: 6rpx;
+  font-size: 50rpx;
+}
+
+.input-placeholder,
+.textarea-placeholder{
+  color: #c7c7c7;
+}
+/* 结束 */

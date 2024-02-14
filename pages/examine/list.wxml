@@ -1,0 +1,89 @@
+<page-header title='信息审核' open-slot>
+  <view slot="content">
+    <view class="header-box">
+      <view class="header">
+        <block wx:for="{{category}}" wx:key="index">
+          <view class="cate-item {{currCate==item.key?'curr-cate':''}}" bindtap="switchCate" data-idx="{{index}}"
+            data-key="{{item.key}}">
+            {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</page-header>
+
+<view class="all-box">
+  <block wx:for="{{multiFormInfo[currCate].formKeys}}" wx:for-item="formKey" wx:key="formKey">
+    <view class='reports-header' style="margin-bottom:0">
+      <view class='title'>
+        <text>{{auditInfo[currCate][formKey].title}}</text>
+        <text style="float:right" wx:if="{{auditInfo[currCate][formKey].total}}">共{{auditInfo[currCate][formKey].total}}份</text>
+      </view>
+      <view class="subtitle">{{auditInfo[currCate][formKey].subTitle}}</view>
+    </view>
+
+    <van-transition show="{{auditList[currCate][formKey].total!=0}}" name="slide-down">
+      <view class="audit-box none-top-radius" style="z-index:{{19-index}};">
+        <block wx:for="{{auditList[currCate][formKey].records}}" wx:key="index" wx:for-item="auditItem">
+          <van-row custom-class="audit-list" wx:if="{{index+1 <= auditInfo[currCate][formKey].size}}" bindtap="tapDetails"
+            data-key="{{formKey}}" data-idx="{{index}}">
+            <van-col span="2">
+              <view class="{{auditItem.status}}" style="font-size: 50rpx;"></view>
+            </van-col>
+            <van-col span="12">
+              <view class="font">
+                {{auditItem.classes}} {{auditItem.submitName}}
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="font" style="text-align:right">
+                {{statusDict[auditItem.status]}}
+              </view>
+            </van-col>
+            <van-col span="2">
+              <text class="icon-right" style="font-size: 50rpx;"></text>
+            </van-col>
+          </van-row>
+        </block>
+
+        <view class="bottom-box">
+          <block wx:if="{{auditInfo[currCate][formKey].size==10}}">
+            <van-button bind:click="perviousPage" data-key="{{formKey}}" custom-class="button-pervious" plain round
+              color="#65A1E1" type="info" disabled="{{auditList[currCate][formKey].current<=1}}">
+              上一页
+            </van-button>
+            <van-button bind:click="nextPage" data-key="{{formKey}}" custom-class="button-next" round color="#65A1E1"
+              type="info" disabled="{{auditList[currCate][formKey].current>=auditList[currCate][formKey].pages}}">
+              下一页
+            </van-button>
+          </block>
+
+          <block wx:if="{{auditInfo[currCate][formKey].size==3}}">
+            <van-button bind:tap="viewAllList" data-key="{{formKey}}" custom-class="button-next" round color="#65A1E1"
+              type="info">查看更多
+            </van-button>
+          </block>
+        </view>
+      </view>
+    </van-transition>
+  </block>
+  <!-- 没有数据时 -->
+  <block wx:if="{{!multiFormInfo[currCate] || multiFormInfo[currCate].formKeys.length==0}}">
+    <van-empty image="error" description="没有数据" />
+  </block>
+
+  <block wx:if="{{multiFormInfo[currCate].pages>1}}">
+    <view class="bottom-box justify-around">
+      <van-button bind:click="perviousForm" custom-class="button-pervious" plain round color="#65A1E1" type="info"
+        disabled="{{multiFormInfo[currCate].current>1}}">
+        上一页
+      </van-button>
+      <van-button bind:click="nextForm" custom-class="button-next" round color="#65A1E1" type="info"
+        disabled="{{multiFormInfo[currCate].current<multiFormInfo[currCate].pages}}">
+        下一页
+      </van-button>
+    </view>
+  </block>
+
+</view>

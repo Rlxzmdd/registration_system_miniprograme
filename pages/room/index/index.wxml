@@ -1,0 +1,42 @@
+<!-- 顶部信息块 -->
+<view class="container">
+  <custom-card title="已申请的房间" content="创客空间" leftBottom="2021/2/26 14:00-18:00" class="info-card">
+    <view class="right" slot="right">
+      <view class="entrance" bindtap="toPage" data-key="/pages/my/code/misc">
+        <text class="icon-qr_code" style="font-size: 50rpx;"></text>
+        <text>信息码</text>
+      </view>
+    </view>
+  </custom-card>
+  <!-- 功能入口块 -->
+  <view class="func-card">
+    <block wx:for="{{func}}" wx:key="index">
+      <view class="func" catchtap="{{item.tapEvent}}" data-key="{{item.key}}">
+        <text class="{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 申请列表 -->
+  <custom-card title_4="申请列表" class="record-card">
+    <view slot="content" class="record" bindtap="toPage" data-key="../records/records?id">
+      <view style="width: 100%;">
+        <block wx:for="{{3}}" wx:key="index" wx:if="{{applyList[index]}}">
+          <view class="rec-item">
+            <view class="title">
+              <text class="">#{{index+1}} </text>
+              <text>{{applyList[index].name || '...'}}</text>
+            </view>
+            <view class="bottom">
+              <text>{{applyList[index].date}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="right">
+        <van-icon name="arrow" />
+      </view>
+    </view>
+  </custom-card>
+
+</view>

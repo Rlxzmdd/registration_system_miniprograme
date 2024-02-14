@@ -1,0 +1,17 @@
+<view class="card ">
+    <view class="title"> 与陌MIS隐私政策<view class="titleBg"></view></view>
+     <view class="date-content">
+         更新日期：2021年2月2日
+    </view>
+    <view class="law-content">
+    我们重视用户的隐私。您在使用我们的服务时，我们可能会收集和使用您的相关信息。</view>  
+    <view class="law-content">
+    我们希望通过本《隐私政策》向您说明，在使用我们的服务时，我们如何收集、使用、储存和分享这些信息，以及我们为您提供的访问、更新、控制和保护这些信息的方式。
+    </view>      
+    
+    
+    <!-- 剩下的条款并没有想好 -->
+
+
+
+</view>

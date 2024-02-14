@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "custom-card": "/common/components/custom-card/custom-card",
+    "van-field": "@vant/weapp/field/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  }
+}

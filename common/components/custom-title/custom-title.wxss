@@ -1,0 +1,127 @@
+.qr-header{
+  min-height:95rpx;
+  border-radius: 30rpx 30rpx 0 0 ;
+  color: #fff;
+  background: #606c88; 
+  background: linear-gradient(to right, #465fA6, #6a89d1); 
+  padding:15rpx 35rpx 0 ;
+}
+.qr-header2{
+  min-height:70rpx;
+  border-radius: 20rpx 20rpx 0 0 ;
+  padding:15rpx 25rpx 0 ;
+  background: #606c8896;  
+  /* background: linear-gradient(to right,#aeabe4, #d6e1ff); */
+
+ }
+
+
+.left-title{
+  font-weight: bolder;
+}
+.left-content{
+  font-size: 22rpx;
+}
+
+.full-redius{
+  border-radius: 20rpx;
+}
+.half-redius{
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.top-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.top-card .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8rpx 28rpx;
+}
+
+.top-card .left .title {
+  position: relative;
+  padding-left: 10rpx;
+  padding-bottom: 26rpx;
+  font-size: 60rpx;
+  color: #454545;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.top-card .left .icon {
+  position: relative;
+  padding-top: 10rpx;
+  font-size: 60rpx;
+  color: #454545;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.title .title-bg{
+  position: absolute;
+  top: 44rpx;
+  left: 0rpx;
+  z-index: -1;
+  background-color: #d6e1ff;
+  height: 36rpx;
+  width: 389rpx;
+}
+
+
+.title-4{
+  font-size: 40rpx !important;
+}
+
+.title-4 .title-bg{
+  top: 28rpx !important;
+  width: 180rpx !important;
+  height: 28rpx !important;
+}
+  
+.top-card .left .content {
+  color: #595959;
+  font-size: 60rpx;
+  font-weight: 600;
+  margin: 24rpx 0 40rpx;
+}
+
+.top-card .left .bottom {
+  font-size: 32rpx;
+  color: #b5b5b5;
+}
+
+.top-card .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 160rpx;
+  border-left: 14rpx solid #d6e1ff;
+}
+
+.SZPT_Icon{
+  width: 406rpx;
+  height: 70rpx;
+
+}
+.SZPT_Icon_small{
+  width: 306rpx;
+  height: 55rpx;
+
+}
+
+.Health_Icon{
+  padding-top: 8rpx;
+  width: 70rpx;
+  height: 70rpx;
+
+}

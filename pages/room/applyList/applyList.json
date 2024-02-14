@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "申请列表",
+  "usingComponents": {
+    "custom-card": "/common/components/custom-card/custom-card",
+    "custom-room-card": "/common/components/custom-list/custom-list"
+  }
+}

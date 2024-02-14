@@ -1,0 +1,41 @@
+/* pages/my/law/agreement.wxss */
+page{
+  color: black;
+  padding-top: 20rpx;
+  width: 95%;
+  margin: 0 auto;
+}
+.contact{
+  width:90%;
+  margin: 0 auto;
+}
+
+/* CSS卡片 */
+.card{/*  */
+  background-color: white;
+  min-height: 100rpx;
+  border-radius:25rpx;
+  padding: 0 40rpx;
+  padding-top: 20rpx;
+  padding-bottom: 50rpx;
+  margin: 30rpx 10rpx;
+}
+
+.title {/*  */
+  text-align: left;
+  font-size: 40rpx;
+  font-weight: bolder;
+  margin-bottom: 30rpx;
+  z-index: 10;
+  position: relative;
+}
+.titleBg{/*  */
+  position: absolute;
+  width: 110px;
+  height: 13px;
+  left: -20rpx;
+  background:#d6e1ff;
+  bottom: 0;
+  z-index: -5;
+}
+/* 文本样式 */

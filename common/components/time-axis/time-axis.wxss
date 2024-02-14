@@ -1,0 +1,51 @@
+.time-axis-container {
+  display: flex;
+  flex: 1;
+  padding-left: 28rpx;
+  padding-right: 40rpx;
+  color: #595959;
+}
+
+.round-view {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10px;
+  background: #65A1E1;
+}
+
+.out-round-view {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10px;
+  background: #999;
+}
+
+.left-line {
+  display: flex;
+  flex: 1;
+  width: 2rpx;
+  background: #65A1E1;
+}
+
+.out-left-line {
+  display: flex;
+  flex: 1;
+  width: 2rpx;
+  background: #C7CBD5;
+}
+
+.right-box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.right-container {
+  margin-top: 10rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  margin-top: -12rpx;
+}

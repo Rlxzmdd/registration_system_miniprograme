@@ -1,0 +1,185 @@
+<page-header title="登录" isBack="{{false}}"></page-header>
+<view class="content">
+				<custom-title showicon="true"></custom-title>
+				<custom-card halfredius="true" title_4="Hey 东软" content="欢迎使用" leftBottom="Hey东软" class="top-card">
+								<view class="right" slot="right">
+												<view class="entrance" catchtap="JumpFAQ">
+																<text class="icon-wenti" style="font-size: 50rpx;"></text>
+																<text>遇到问题</text>
+																<!-- <van-button plain hairline type="info"  open-type="contact" size="mini">遇到问题</van-button> -->
+												</view>
+								</view>
+				</custom-card>
+				<van-transition show="{{ step == 1 }}" duration="{{ duration }}">
+								<custom-card title_4="{{bindName[bindType]}}" wx:if="{{step == 1}}">
+												<view slot="content" class="bind">
+																<van-skeleton row="4" loading="{{ loading }}">
+																				<van-transition duration="{{ duration }}">
+																								<!-- 学号登录 -->
+																								<view wx:if="{{bindType == 0}}">
+																												<text-input id="stuId" forminfo="{{inputForm.stuId}}" valiRes="{{formVali.stuId}}" bind:validate="formValidate"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<text-input id="stuName" forminfo="{{inputForm.stuName}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<view class="icon-xiayibu next " bindtap="confirmBind"></view>
+																								</view>
+																								<!-- 录取通知书登录 -->
+																								<view wx:if="{{bindType == 1}}">
+																												<text-input id="admissionNum" forminfo="{{inputForm.admissionNum}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<text-input id="stuName" forminfo="{{inputForm.stuName}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<view class="icon-xiayibu next " bindtap="confirmBind"></view>
+																								</view>
+																								<!-- 工号登录 -->
+																								<view wx:if="{{bindType == 2}}">
+																												<text-input id="teacherId" forminfo="{{inputForm.teacherId}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<text-input id="password" forminfo="{{inputForm.password}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<view class="icon-xiayibu next " bindtap="confirmBind"></view>
+																								</view>
+																								<!-- 考生号登录 -->
+																								<view wx:if="{{bindType == 3}}">
+																												<text-input id="stuName" forminfo="{{inputForm.stuName}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<text-input id="examineNumber" forminfo="{{inputForm.examineNumber}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<text-input id="idCard_6" forminfo="{{inputForm.idCard_6}}"></text-input>
+																												<view style="height: 20rpx;"></view>
+																												<view class="icon-xiayibu next " bindtap="confirmBind"></view>
+																								</view>
+																				</van-transition>
+																</van-skeleton>
+												</view>
+								</custom-card>
+				</van-transition>
+				<van-transition show="{{ step == 2 }}" duration="{{ duration }}">
+								<custom-card title_4="确认身份" wx:if="{{step == 2}}">
+												<view slot="content" class="bind">
+																<view class="VerifyTips">Hi, {{name}} 同学</view>
+																<view class="">为了你的信息安全请补齐身份证后六位</view>
+																<view class="verificationCode">
+																				<input type="idcard" maxlength="6" bindinput="inputValue" focus />
+																				<view class="{{veCode[0] ? 'activeView' : 0}}">{{veCode[0]}}</view>
+																				<view class="{{veCode[1] ? 'activeView' : 0}}">{{veCode[1]}}</view>
+																				<view class="{{veCode[2] ? 'activeView' : 0}}">{{veCode[2]}}</view>
+																				<view class="{{veCode[3] ? 'activeView' : 0}}">{{veCode[3]}}</view>
+																				<view class="{{veCode[4] ? 'activeView' : 0}}">{{veCode[4]}}</view>
+																				<view class="{{veCode[5] ? 'activeView' : 0}}">{{veCode[5]}}</view>
+																</view>
+																<view class="{{veCode.length == 6 ? 'icon-xiayibu next ' : ''}}" bindtap="SubmitLogin"></view>
+												</view>
+								</custom-card>
+				</van-transition>
+				<van-transition duration="{{ duration }}">
+								<custom-card title_4="其他方式">
+												<view slot="content" class="bind">
+																<van-row class="method">
+																				<!-- <van-col span="12" bindtap="onClickShow">
+				<view class="icon-shoujihao loginType"></view>
+				<p>手机号关联登录</p>
+			</van-col> -->
+																				<block wx:for="{{bindName}}" wx:key="index">
+																								<van-col span="8" bindtap="switchBindType" data-type="{{index}}" wx:if="{{bindType != index}}">
+																												<view class="icon-mima loginType"></view>
+																												<p>{{item}}</p>
+																								</van-col>
+																				</block>
+																</van-row>
+												</view>
+								</custom-card>
+				</van-transition>
+				<van-transition show="{{ShowFollow}}" duration="{{ duration }}">
+								<custom-card title_4="关注我们" wx:if="{{ShowFollow}}">
+												<view slot="content" class="bind">
+																<official-account binderror="ShowFollow"></official-account>
+												</view>
+								</custom-card>
+				</van-transition>
+				<!-- <view class="alternative">
+		<view class="password">教职员工登录</view>
+		<view class="issue">遇到问题</view>
+	</view> -->
+</view>
+<view class="hint">
+				登录代表同意
+				<text class="link" bindtap="JumpAgreement">Hey东软用户协议、隐私政策，</text>
+				并授权使用您的Hey东软账号信息（如昵称、头像、手机号）以便进行业务管理
+</view>
+<!-- 手机号登录授权 -->
+<van-action-sheet show="{{ show }}" bind:close="onClose">
+				<view class="s-content">
+								<view class="title">
+												授权请求
+												<view class="titleBg"></view>
+								</view>
+								<view>Hey东软请求：</view>
+								<view>
+												<span>·获取您的微信绑定手机号</span>
+								</view>
+								<view>以便用于匹配数据系统查找您的信息</view>
+								<view class="small-font">
+												授权代表同意
+												<text class="link" bindtap="JumpAgreement">Hey东软用户协议、隐私政策，</text>
+												并授权使用您的手机号与Hey东软账号信息进行数据关联
+								</view>
+				</view>
+				<van-button type="info" color="#465fA6" block open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+								授权获取手机号
+				</van-button>
+</van-action-sheet>
+<!-- 绑定手机号 -->
+<van-action-sheet show="{{ ShowBind }}" bind:close="onClose">
+				<view class="s-content" id="toLogin">
+								<view style="font-size:1.5rem;font-weight:bold;">Hello 新同学</view>
+								<view style="margin-bottom:0.5rem">距离进入系统只差一步了哦~</view>
+								<!-- <view>为了确认您的联系方式是正确无误的</view> -->
+								<!-- <view>请授权获取您的微信绑定手机号</view> -->
+								<view class="title">
+												授权请求
+												<view class="titleBg"></view>
+								</view>
+								<view>Hey东软请求：</view>
+								<view>
+												<span>·获取您的微信绑定手机号</span>
+								</view>
+								<view>用于在数据系统中绑定您的手机号</view>
+								<view>快速登录、下发提醒、公告等通知信息</view>
+								<view class="small-font">*根据国家相关法律法规，您的信息将会进行加密传输与存储。在未得到您的授权之前，Hey东软不会与任何第三方共享您的数据</view>
+				</view>
+				<van-button type="info" color="#465fA6" block open-type="getPhoneNumber" bindgetphonenumber="SubmitLogin">
+								授权获取手机号
+				</van-button>
+</van-action-sheet>
+<!-- 召唤客服 -->
+<van-action-sheet show="{{ShowKefu}}" bind:close="onClose">
+				<view class="s-content">
+								<view style="font-size:1.5rem;font-weight:bold;">遇到问题了？</view>
+								<view style="margin-bottom:0.5rem">不用担心，点击下方按钮既可联系客服~</view>
+								<!-- <view>为了确认您的联系方式是正确无误的</view> -->
+								<!-- <view>请授权获取您的微信绑定手机号</view> -->
+								<!-- <view class="title"> 联系团队<view class="titleBg"></view></view> -->
+				</view>
+				<van-button type="info" color="#465fA6" block open-type="contact">联系客服</van-button>
+</van-action-sheet>
+<!-- 等待判断 -->
+<!-- <van-overlay show="{{LoginCheck}}" >
+	<view class="wrapper">
+    	<van-loading color="#1989fa" vertical size="36px">请等待...</van-loading>
+  	</view>
+	
+</van-overlay> -->
+<!-- 遮罩开始
+<van-overlay show="{{ show }}" bind:click="onClickHide">
+<view class="wrapper">
+	<view class="block" catch:tap="noop" >
+		<view class="s-content">
+			<view class="title"> 授权请求<view class="titleBg"></view></view>
+			<span>系统需要获取你的微信绑定手机号用于匹配数据系统以便查找您的信息</span>
+			<view>同意代表授权Hey东软使用您的（手机号）进行业务用途</view>
+		</view>
+		<van-button type="info" color="#606c8896" block open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权获取手机号</van-button>
+	</view>
+</view>
+</van-overlay> -->
