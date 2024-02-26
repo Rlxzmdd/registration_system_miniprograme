@@ -2,7 +2,7 @@ const { loginByCode, getMyRole } = require("../../api/user")
 const { getStuSimpleInfo } = require("../../api/student")
 const Base64 = require("../../utils/base64")
 import { getRoleRouter, shareApp } from '../../api/other'
-
+import weappJwt from '../../utils/weapp-jwt.js'
 const app = getApp()
 let timeout = null
 let nextRoute = ''
@@ -27,8 +27,6 @@ Page({
     }
     else
       this.data.targetRoute = 'index'
-
-
     this.checkBindStatus()
   },
 
@@ -42,8 +40,10 @@ Page({
     // } else {
     //   app.globalData.userInfo = userInfo
     //   nextRoute = this.data.targetRoute
-    // }
-    this.wxLogin()
+		// }
+		console.log("开始登录")
+		this.wxLogin()
+		console.log("准备跳转")
     this.timeoutJump()
   },
 
@@ -63,7 +63,7 @@ Page({
       }
       else
         this.timeoutJump()
-    }, 2000)
+    }, 1000)
   },
 
   // 登录(获取token,没有则跳转到登录页)
@@ -77,13 +77,14 @@ Page({
           loginByCode(res.code).then(async (res) => {
             console.log('loginByCode success=>', res)
 
-            let userInfo = app.globalData.userInfo || wx.getStorageSync('userInfo') || {}
+						let userInfo = app.globalData.userInfo || wx.getStorageSync('userInfo') || {}
             userInfo.token = res.authorization
             wx.setStorageSync('userInfo', userInfo)
             app.globalData.userInfo = userInfo
 
             // 获取用户简略信息
-            that.getSimpleInfo(res.authorization)
+						that.getSimpleInfo(res.authorization)
+						console.log("获取完毕")
           }).catch(err => {
             if (err.code == 'V0100') {
               nextRoute = 'login'
@@ -99,22 +100,27 @@ Page({
 
   // 获取用户简略信息
   getSimpleInfo(token) {
+		console.log("获取简易信息=>"+token)
     let simpleInfo = {}
 
     // 获取用户类型
     // 解码token的第二段
-    let decodeRes = Base64.decode(token.split('.')[1])
-    decodeRes = decodeRes.substring(0, decodeRes.length - 2)
-    let userIdentiy = JSON.parse(decodeRes)
-    const { user_type, user_id, exp } = userIdentiy
+		let decodeRes = Base64.decode(token.split('.')[1])
+		decodeRes = weappJwt(token)
+		// decodeRes = decodeRes.substring(0, decodeRes.length - 2)
+		console.log(decodeRes)
+    // let userIdentiy = JSON.parse(decodeRes)
+    let userIdentiy = decodeRes
+		const { user_type, user_id, exp } = userIdentiy
     Object.assign(simpleInfo, {
       userType: user_type,
       userId: user_id,
       exp
-    })
-
+		})
+		console.log("获取角色")
     // 获取用户角色
     getMyRole().then(async res => {
+			console.log("角色=> " +res)
       let role = []
       let roleId = []
       res.forEach(item => {
@@ -124,7 +130,7 @@ Page({
       this.getRouter(roleId)
 
       // 判断身份
-      let identity = ''
+			let identity = ''
       if (role.length == 1 && role[0].indexOf('学生') != -1) {
         // 学生
         identity = '学生'
@@ -158,8 +164,10 @@ Page({
 
   // 获取首页功能路由
   getRouter(roleId) {
+		console.log("获取路由")
     getRoleRouter(roleId).then(res => {
-      app.globalData.funcRouter = res
+			app.globalData.funcRouter = res
+			console.log(res)
     })
   },
 

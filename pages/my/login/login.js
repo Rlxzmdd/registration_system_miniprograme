@@ -12,8 +12,7 @@ Page({
         placeholder: '请输入学号',
         inputType: 'number',
         rule: {
-          type: 'reg',
-          reg: '^[1-9]([0-9]{7})$',
+          type: 'notnull',
           msg: '输入的学号有误'
         }
       },
@@ -100,7 +99,6 @@ Page({
   onLoad: function (options) {
     var that = this
     console.log('login options=>', options)
-
   },
 
   onShow: function () {
